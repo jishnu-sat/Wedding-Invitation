@@ -321,6 +321,259 @@
             50% { transform: translateY(-12px) rotate(8deg); }
         }
 
+
+        /* Interactive wax-sealed envelope */
+        body.invitation-locked {
+            overflow: hidden;
+        }
+
+        .envelope-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(circle at 50% 42%, rgba(255,255,255,.98), rgba(255,246,243,.96) 35%, rgba(238,216,211,.98)),
+                var(--bg-color);
+            transition: opacity .9s ease, visibility .9s ease;
+            cursor: pointer;
+        }
+
+        .envelope-screen::before,
+        .envelope-screen::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(170,112,126,.16);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .envelope-screen::before { width: 70vmin; height: 70vmin; }
+        .envelope-screen::after { width: 92vmin; height: 92vmin; }
+
+        .envelope-scene {
+            position: relative;
+            width: min(82vw, 560px);
+            aspect-ratio: 1.42;
+            display: grid;
+            place-items: center;
+            perspective: 1200px;
+            z-index: 2;
+        }
+
+        .wax-envelope {
+            position: relative;
+            width: 78%;
+            aspect-ratio: 1.5;
+            transform-style: preserve-3d;
+            filter: drop-shadow(0 25px 35px rgba(76,45,54,.22));
+            transition: transform .35s ease;
+        }
+
+        .wax-envelope:hover {
+            transform: translateY(-6px) rotateX(2deg);
+        }
+
+        .envelope-body {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: 5px 5px 14px 14px;
+            background: linear-gradient(145deg, #e9c5c1, #d99fa7);
+            box-shadow: inset 0 0 0 1px rgba(100,55,65,.1);
+        }
+
+        .envelope-body::before,
+        .envelope-body::after {
+            content: "";
+            position: absolute;
+            bottom: -34%;
+            width: 72%;
+            height: 75%;
+            background: rgba(255,255,255,.13);
+            transform: rotate(35deg);
+        }
+
+        .envelope-body::before { left: -30%; }
+        .envelope-body::after { right: -30%; transform: rotate(-35deg); }
+
+        .envelope-flap {
+            position: absolute;
+            z-index: 4;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 65%;
+            background: linear-gradient(160deg, #efceca, #dcaab0);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: 50% 0;
+            transform: rotateX(0deg);
+            backface-visibility: visible;
+            transition: transform 1s cubic-bezier(.2,.85,.25,1);
+            filter: drop-shadow(0 3px 3px rgba(73,43,52,.12));
+        }
+
+        .envelope-paper {
+            position: absolute;
+            z-index: 2;
+            left: 7%;
+            right: 7%;
+            bottom: 4%;
+            height: 82%;
+            border-radius: 4px;
+            background: linear-gradient(#fffdfa, #fff6f2);
+            transform: translateY(70%);
+            transition: transform 1.15s cubic-bezier(.2,.8,.2,1) .15s;
+            box-shadow: 0 -4px 12px rgba(70,40,48,.08);
+        }
+
+        .wax-seal {
+            position: absolute;
+            z-index: 7;
+            left: 50%;
+            top: 57%;
+            width: clamp(72px, 13vw, 105px);
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            transform: translate(-50%, -50%);
+            border-radius: 48% 52% 51% 49%;
+            background:
+                radial-gradient(circle at 35% 25%, #d9828f, #a83f54 60%, #812b40);
+            color: #fbe9e8;
+            box-shadow:
+                inset 0 3px 4px rgba(255,255,255,.22),
+                inset 0 -7px 10px rgba(68,12,25,.28),
+                0 7px 12px rgba(76,30,42,.28);
+            transition: transform .55s ease, opacity .35s ease;
+        }
+
+        .wax-seal::before {
+            content: "";
+            position: absolute;
+            inset: 10%;
+            border: 1px solid rgba(255,230,226,.35);
+            border-radius: 47% 53% 49% 51%;
+        }
+
+        .wax-seal span {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.9rem, 5vw, 3rem);
+            line-height: 1;
+            transform: translateY(-2px);
+            text-shadow: 0 2px 2px rgba(75,16,30,.3);
+        }
+
+        .envelope-hint {
+            position: absolute;
+            z-index: 10;
+            bottom: -5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: .72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #9a6872;
+            animation: pulseHint 2s ease-in-out infinite;
+        }
+
+        .opening-copy {
+            position: absolute;
+            z-index: 3;
+            bottom: 8%;
+            text-align: center;
+            color: #80656b;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .opening-copy span {
+            font-size: .7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .opening-copy strong {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #6c4a53;
+        }
+
+        .envelope-screen.opening .envelope-flap {
+            transform: rotateX(175deg);
+        }
+
+        .envelope-screen.opening .envelope-paper {
+            transform: translateY(-25%);
+        }
+
+        .envelope-screen.opening .wax-seal {
+            transform: translate(-50%, -50%) scale(1.5) rotate(15deg);
+            opacity: 0;
+        }
+
+        .envelope-screen.opening .wax-envelope {
+            animation: envelopeBurst .95s cubic-bezier(.2,.8,.2,1) .2s both;
+        }
+
+        .envelope-screen.opening .envelope-hint,
+        .envelope-screen.opening .opening-copy {
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .envelope-screen.opening .envelope-sparkles i {
+            animation: sparkleBurst 1.15s ease-out forwards;
+        }
+
+        .envelope-screen.closed .envelope-sparkles i { opacity: 0; }
+
+        .envelope-sparkles i {
+            position: absolute;
+            z-index: 8;
+            left: 50%;
+            top: 57%;
+            font-style: normal;
+            color: #c77f8d;
+            font-size: 1.4rem;
+            pointer-events: none;
+        }
+
+        .envelope-sparkles i:nth-child(1) { --x: -150px; --y: -100px; }
+        .envelope-sparkles i:nth-child(2) { --x: 155px; --y: -80px; }
+        .envelope-sparkles i:nth-child(3) { --x: -125px; --y: 80px; }
+        .envelope-sparkles i:nth-child(4) { --x: 125px; --y: 100px; }
+        .envelope-sparkles i:nth-child(5) { --x: 0px; --y: -145px; }
+
+        .invitation-reveal {
+            animation: invitationReveal 1.2s cubic-bezier(.2,.75,.2,1) both;
+        }
+
+        @keyframes envelopeBurst {
+            0% { transform: scale(1) rotate(0); }
+            35% { transform: scale(1.05) rotate(-1deg); }
+            100% { transform: scale(.72) rotate(2deg); opacity: 0; }
+        }
+
+        @keyframes sparkleBurst {
+            0% { opacity: 0; transform: translate(-50%,-50%) scale(.2); }
+            20% { opacity: 1; }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.5) rotate(180deg); }
+        }
+
+        @keyframes invitationReveal {
+            0% { opacity: 0; transform: translateY(45px) scale(.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes pulseHint {
+            0%, 100% { opacity: .45; }
+            50% { opacity: 1; }
+        }
+
         @media (max-width: 700px) {
             .hero-content { padding: 45px 18px; }
             .couple-container { grid-template-columns: 1fr; gap: 15px; }
@@ -333,6 +586,29 @@
     </style>
 </head>
 <body>
+
+
+    <!-- Opening Envelope -->
+    <div id="envelope-screen" class="envelope-screen" aria-label="Open wedding invitation">
+        <div class="envelope-scene">
+            <div class="envelope-hint">Tap to open</div>
+            <div id="wax-envelope" class="wax-envelope">
+                <div class="envelope-paper"></div>
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+                <div class="wax-seal" aria-hidden="true">
+                    <span>JS</span>
+                </div>
+                <div class="envelope-sparkles" aria-hidden="true">
+                    <i>✦</i><i>·</i><i>✧</i><i>·</i><i>✦</i>
+                </div>
+            </div>
+        </div>
+        <div class="opening-copy">
+            <span>A little envelope</span>
+            <strong>with a lot of love</strong>
+        </div>
+    </div>
 
     <!-- Hero Header -->
     <header>
@@ -425,6 +701,31 @@
 
     <!-- JavaScript for Countdown and RSVP -->
     <script>
+        // Interactive wax-sealed envelope
+        document.body.classList.add('invitation-locked');
+
+        const envelopeScreen = document.getElementById('envelope-screen');
+
+        envelopeScreen.addEventListener('click', () => {
+            if (envelopeScreen.classList.contains('opening')) return;
+
+            envelopeScreen.classList.add('opening');
+
+            // Let the flap/seal animation play before revealing the invitation.
+            setTimeout(() => {
+                envelopeScreen.style.opacity = '0';
+                document.body.classList.remove('invitation-locked');
+
+                document.querySelector('header')?.classList.add('invitation-reveal');
+                document.querySelector('header')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                setTimeout(() => {
+                    envelopeScreen.style.visibility = 'hidden';
+                    envelopeScreen.remove();
+                }, 900);
+            }, 1050);
+        });
+
         // Countdown Timer Script targeting the Marriage Ceremony
         const weddingDate = new Date("Nov 06, 2026 13:20:00").getTime();
 
