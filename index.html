@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GitHub Pages asset layout: put wedding photos under ./images/ -->
+    <!-- Required files: jishnu-sruthi-cover.jpg, jishnu-sruthi-01.jpg ... jishnu-sruthi-05.jpg -->
     <title>Jishnu & Sruthi - Our Wedding Celebration</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -55,7 +57,7 @@
             padding: 30px 20px;
             background:
                 linear-gradient(135deg, rgba(38,26,32,.58), rgba(90,56,66,.28)),
-                url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=85') center/cover;
+                url('images/jishnu-sruthi-cover.jpg') center/cover;
         }
 
         header::before, header::after {
@@ -370,7 +372,7 @@
             overflow: hidden;
             background:
                 linear-gradient(135deg, rgba(58,7,19,.78), rgba(121,28,49,.55)),
-                url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=85') center/cover;
+                url('images/jishnu-sruthi-cover.jpg') center/cover;
         }
 
         header::before {
@@ -795,6 +797,7 @@
 
 
 
+
         /* Interactive photo story */
         .photo-story {
             padding-top: 95px;
@@ -893,6 +896,250 @@
         .memory:hover::before {
             opacity: 1;
             transform: translateY(0) scale(1);
+        }
+
+
+        /* Creative replacement sections */
+        .story-section {
+            max-width: 100%;
+            padding: 125px 5vw 115px;
+            background:
+                radial-gradient(circle at 50% 15%, rgba(215,154,170,.18), transparent 25%),
+                linear-gradient(180deg, #fffafb 0%, #fdeff2 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .story-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(4.2rem, 8vw, 7rem);
+            color: #6a1024;
+            font-weight: 400;
+            line-height: .9;
+        }
+
+        .story-section .section-intro {
+            max-width: 650px;
+            margin: 16px auto 70px;
+            color: #856973;
+        }
+
+        .story-timeline {
+            max-width: 930px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 82px 1fr;
+            gap: 0 24px;
+            position: relative;
+        }
+
+        .story-timeline::before {
+            content: "";
+            position: absolute;
+            left: 40px;
+            top: 18px;
+            bottom: 18px;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(184,63,89,.35), transparent);
+        }
+
+        .story-node {
+            width: 82px;
+            height: 82px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid rgba(184,63,89,.18);
+            box-shadow: 0 15px 32px rgba(91,16,32,.09);
+            position: relative;
+            z-index: 2;
+            color: var(--accent-color);
+            font-size: .68rem;
+            letter-spacing: 1.5px;
+        }
+
+        .story-node span {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #fbecef;
+            color: #8c3148;
+            font-weight: 600;
+        }
+
+        .story-card {
+            margin-bottom: 28px;
+            padding: 30px 34px;
+            border-radius: 26px;
+            background: rgba(255,255,255,.82);
+            border: 1px solid rgba(184,63,89,.13);
+            box-shadow: 0 20px 55px rgba(91,16,32,.075);
+            text-align: left;
+            transition: transform .4s ease, box-shadow .4s ease;
+        }
+
+        .story-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 28px 70px rgba(91,16,32,.12);
+        }
+
+        .story-card-accent {
+            background: linear-gradient(145deg, #fff6f8, #fbe9ed);
+        }
+
+        .story-mini-icon {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .story-label {
+            font-size: .58rem;
+            letter-spacing: 2.7px;
+            color: #a14a60;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .story-card h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.65rem;
+            color: #6a1024;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .story-card p {
+            color: #795d66;
+            font-size: .9rem;
+            max-width: 600px;
+        }
+
+        .story-signature {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .story-signature span {
+            width: 45px;
+            height: 1px;
+            background: rgba(184,63,89,.3);
+        }
+
+        .story-signature p {
+            margin: 0;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.15rem;
+            color: #8b4052;
+        }
+
+        .story-signature b {
+            font-weight: 400;
+            color: #b83f59;
+        }
+
+        .story-orbit {
+            position: absolute;
+            border: 1px solid rgba(184,63,89,.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .orbit-one {
+            width: 420px;
+            height: 420px;
+            right: -170px;
+            top: 12%;
+        }
+
+        .orbit-two {
+            width: 260px;
+            height: 260px;
+            left: -120px;
+            bottom: 8%;
+        }
+
+        .story-star {
+            position: absolute;
+            color: rgba(184,63,89,.25);
+            animation: storyTwinkle 3s ease-in-out infinite;
+        }
+
+        .star-one { left: 12%; top: 24%; }
+        .star-two { right: 13%; bottom: 30%; animation-delay: 1.2s; }
+
+        .memory-wall-section {
+            max-width: 100%;
+            padding: 100px 5vw 115px;
+            background: #fff9fa;
+            text-align: center;
+        }
+
+        .memory-wall {
+            max-width: 1150px;
+            margin: 55px auto 0;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr .8fr 1.1fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+
+        .memory-tile {
+            position: relative;
+            min-height: 250px;
+            padding: 0;
+            border: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #f4dfe4;
+            box-shadow: 0 18px 50px rgba(91,16,32,.08);
+        }
+
+        .memory-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(.8);
+            transition: transform .7s cubic-bezier(.2,.8,.2,1), filter .4s ease;
+        }
+
+        .memory-tile::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(55,5,16,.62), transparent 60%);
+        }
+
+        .memory-tile span {
+            position: absolute;
+            z-index: 2;
+            left: 18px;
+            bottom: 16px;
+            color: #fff4f5;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.7rem;
+        }
+
+        .memory-tile:hover img {
+            transform: scale(1.08);
+            filter: saturate(1);
+        }
+
+        .tile-a { min-height: 320px; }
+        .tile-c { min-height: 290px; }
+        .tile-d { min-height: 320px; }
+
+        @keyframes storyTwinkle {
+            0%,100% { opacity: .35; transform: scale(.88) rotate(0); }
+            50% { opacity: .9; transform: scale(1.12) rotate(12deg); }
         }
 
         /* "When & Where" wow-factor treatment */
@@ -1679,7 +1926,74 @@
                 transform: translate(58px, -55px) rotate(12deg);
             }
 
-            .hero-content { padding: 48px 20px; }            .photo-story { padding-top: 78px; padding-bottom: 88px; }
+            .hero-content { padding: 48px 20px; }            .story-section { padding: 90px 20px; }
+            .story-timeline {
+                grid-template-columns: 58px 1fr;
+                gap: 0 14px;
+            }
+            .story-timeline::before { left: 29px; }
+            .story-node {
+                width: 58px;
+                height: 58px;
+            }
+            .story-node span {
+                width: 38px;
+                height: 38px;
+                font-size: .58rem;
+            }
+            .story-card {
+                padding: 24px 20px;
+                margin-bottom: 20px;
+            }
+            .story-card h3 { font-size: 2.25rem; }
+            .story-signature p { font-size: 1.9rem; }
+            .memory-wall {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-top: 35px;
+            }
+            .memory-tile, .tile-a, .tile-c, .tile-d {
+                min-height: 210px;
+            }
+            .couple-showcase {
+                padding: 90px 20px 90px;
+            }
+
+            .couple-title {
+                font-size: clamp(4rem, 19vw, 5.2rem);
+            }
+
+            .couple-divider {
+                margin-bottom: 42px;
+            }
+
+            .couple-container {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                max-width: 520px;
+            }
+
+            .couple-profile {
+                min-height: 400px;
+                padding: 40px 20px 32px;
+            }
+
+            .couple-ampersand {
+                width: 70px;
+                height: 70px;
+                font-size: 4rem;
+                margin: -2px auto;
+            }
+
+            .portrait-wrap {
+                width: min(64vw, 235px);
+            }
+
+            .sparkle-a { left: 14%; top: 10%; }
+            .sparkle-b { right: 15%; top: 43%; }
+            .sparkle-c { right: 5%; top: 70%; }
+
+            .photo-story { padding-top: 78px; padding-bottom: 88px; }
             .photo-mosaic {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto;
@@ -1741,10 +2055,10 @@
         <div class="envelope-scene">
             <div class="photo-stack" aria-hidden="true">
                 <div class="photo-card photo-one">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=85" alt="">
+                    <img src="images/jishnu-sruthi-01.jpg" alt="">
                 </div>
                 <div class="photo-card photo-two">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=85" alt="">
+                    <img src="images/jishnu-sruthi-02.jpg" alt="">
                 </div>
             </div>
 
@@ -1785,50 +2099,78 @@
     </header>
 
     <!-- Couple Section -->
-    <section class="reveal-section">
-        <h2 class="reveal">The Couple</h2>
-        <div class="divider"></div>
-        <div class="couple-container reveal">
-            <div class="profile-card">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80" alt="Jishnu">
-                <h3>Jishnu</h3>
-            </div>
-            <div class="ampersand">&</div>
-            <div class="profile-card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Sruthi">
-                <h3>Sruthi</h3>
-            </div>
+    <!-- Our Story -->
+
+    <!-- Memory Wall -->
+    <section class="reveal-section memory-wall-section">
+        <div class="section-kicker reveal">Little glimpses</div>
+        <h2 class="reveal">Moments We Love</h2>
+        <div class="memory-wall reveal">
+            <button class="memory-tile tile-a" type="button" aria-label="View memory">
+                <img src="images/jishnu-sruthi-03.jpg" alt="Wedding memory">
+                <span>the laughter</span>
+            </button>
+            <button class="memory-tile tile-b" type="button" aria-label="View memory">
+                <img src="images/jishnu-sruthi-04.jpg" alt="Wedding detail">
+                <span>the details</span>
+            </button>
+            <button class="memory-tile tile-c" type="button" aria-label="View memory">
+                <img src="images/jishnu-sruthi-05.jpg" alt="Wedding celebration">
+                <span>the joy</span>
+            </button>
+            <button class="memory-tile tile-d" type="button" aria-label="View memory">
+                <img src="images/jishnu-sruthi-01.jpg" alt="Wedding photo">
+                <span>the beginning</span>
+            </button>
         </div>
     </section>
 
-    <!-- Celebration Section -->
+    <section class="reveal-section story-section">
+        <div class="story-orbit orbit-one"></div>
+        <div class="story-orbit orbit-two"></div>
+        <div class="story-star star-one">✦</div>
+        <div class="story-star star-two">✧</div>
 
-    <!-- Photo Story -->
-    <section class="reveal-section photo-story">
-        <div class="section-kicker reveal">A few frames from our story</div>
-        <h2 class="reveal">Love in Frames</h2>
-        <p class="section-intro reveal">A little glimpse of the joy, laughter and memories that brought us here.</p>
+        <div class="section-kicker reveal">A weekend worth remembering</div>
+        <h2 class="reveal story-title">Our Story</h2>
+        <p class="section-intro reveal">Not just a wedding, but a little journey filled with moments we hope you will remember with us.</p>
 
-        <div class="photo-mosaic reveal">
-            <figure class="memory memory-large">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=88" alt="Wedding couple portrait">
-                <figcaption><span>Chapter I</span> The beginning</figcaption>
-            </figure>
+        <div class="story-timeline reveal">
+            <div class="story-node node-one">
+                <span>01</span>
+            </div>
+            <div class="story-card">
+                <div class="story-mini-icon">♡</div>
+                <div class="story-label">THE INVITATION</div>
+                <h3>Begin with a little magic</h3>
+                <p>Break the seal, turn the page, and step into our celebration.</p>
+            </div>
 
-            <figure class="memory">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=88" alt="Wedding celebration">
-                <figcaption><span>Chapter II</span> The laughter</figcaption>
-            </figure>
+            <div class="story-node node-two">
+                <span>02</span>
+            </div>
+            <div class="story-card story-card-accent">
+                <div class="story-mini-icon">✦</div>
+                <div class="story-label">THE CEREMONY</div>
+                <h3>A beautiful beginning</h3>
+                <p>Join us as two families, two stories, and two hearts come together.</p>
+            </div>
 
-            <figure class="memory">
-                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=88" alt="Wedding rings">
-                <figcaption><span>Chapter III</span> The little details</figcaption>
-            </figure>
+            <div class="story-node node-three">
+                <span>03</span>
+            </div>
+            <div class="story-card">
+                <div class="story-mini-icon">♫</div>
+                <div class="story-label">THE CELEBRATION</div>
+                <h3>Come for the moments</h3>
+                <p>Stay for the smiles, music, conversations, photographs and everything in between.</p>
+            </div>
+        </div>
 
-            <figure class="memory memory-wide">
-                <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1200&q=88" alt="Wedding celebration with flowers">
-                <figcaption><span>Chapter IV</span> And the celebration begins…</figcaption>
-            </figure>
+        <div class="story-signature reveal">
+            <span></span>
+            <p>Jishnu <b>&amp;</b> Sruthi</p>
+            <span></span>
         </div>
     </section>
 
@@ -1949,6 +2291,20 @@
     <!-- JavaScript for Countdown and RSVP -->
     <script>
 
+
+
+        // Memory wall tiles use the same lightbox treatment.
+        document.querySelectorAll('.memory-tile').forEach(tile => {
+            tile.addEventListener('click', () => {
+                const image = tile.querySelector('img');
+                const caption = tile.querySelector('span')?.innerText || '';
+                lightbox.querySelector('.lightbox-image').src = image.src;
+                lightbox.querySelector('.lightbox-image').alt = image.alt;
+                lightbox.querySelector('.lightbox-caption').textContent = caption;
+                lightbox.classList.add('show');
+                document.body.classList.add('lightbox-open');
+            });
+        });
 
         // Photo lightbox: tap/click a photo for a full-screen view.
         const photoItems = document.querySelectorAll('.memory');
