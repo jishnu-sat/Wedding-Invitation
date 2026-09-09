@@ -80,23 +80,6 @@
             box-shadow: 0 25px 80px rgba(0,0,0,.2);
         }
 
-        header .hero-frame {
-            position: absolute;
-            inset: 22px;
-            border: 1px solid rgba(255,244,246,.18);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .hero-photo-caption {
-            font-size: .66rem;
-            font-weight: 500;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: rgba(255,241,243,.92);
-            margin-bottom: 13px;
-        }
-
         .hero-content .eyebrow {
             font-size: .8rem;
             font-weight: 500;
@@ -342,6 +325,7 @@
             50% { transform: translateY(-12px) rotate(8deg); }
         }
 
+
         /* Luxury burgundy / blush invitation theme */
         body {
             font-family: 'Montserrat', sans-serif;
@@ -380,49 +364,45 @@
             min-height: 100vh;
             position: relative;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
             text-align: center;
-            color: #fff;
-            padding: 34px 24px 8vh;
+            color: var(--white);
+            padding: 30px 20px;
             overflow: hidden;
-            isolation: isolate;
-            background: url('images/js-cover.jpg') center center / cover no-repeat;
+            background:
+                linear-gradient(135deg, rgba(46,5,12,.24), rgba(103,14,34,.16)),
+                url('images/js-cover.jpg') center/cover;
         }
 
         header::before {
             content: "";
             position: absolute;
-            inset: 0;
-            z-index: -2;
-            background:
-                linear-gradient(180deg,
-                    rgba(34,3,10,.05) 0%,
-                    rgba(34,3,10,.04) 32%,
-                    rgba(34,3,10,.18) 54%,
-                    rgba(34,3,10,.66) 100%);
+            width: 70vmin;
+            height: 70vmin;
+            border: 1px solid rgba(255,238,239,.15);
+            border-radius: 50%;
+            animation: slowRotate 24s linear infinite;
         }
 
         header::after {
-            content: "";
+            content: "♡";
             position: absolute;
-            inset: 0;
-            z-index: -1;
-            background:
-                radial-gradient(circle at 50% 54%, rgba(255,255,255,.06), transparent 24%),
-                linear-gradient(90deg, rgba(48,4,13,.16), transparent 22%, transparent 78%, rgba(48,4,13,.16));
-            pointer-events: none;
+            font-size: 18rem;
+            color: rgba(255,255,255,.035);
+            right: -3%;
+            bottom: -14%;
+            transform: rotate(-15deg);
         }
 
         .hero-content {
-            width: min(940px, 94vw);
-            max-width: 940px;
-            padding: 34px 42px 32px;
-            background: rgba(62,7,19,.38);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,241,243,.18);
-            border-radius: 28px;
-            box-shadow: 0 18px 70px rgba(30,0,7,.22);
+            max-width: 900px;
+            padding: 58px 40px;
+            background: linear-gradient(145deg, rgba(57,8,19,.72), rgba(91,16,32,.58));
+            backdrop-filter: blur(7px);
+            border: 1px solid rgba(255,235,239,.26);
+            border-radius: 30px;
+            box-shadow: 0 28px 90px rgba(25,0,8,.24);
             position: relative;
             z-index: 2;
         }
@@ -438,19 +418,19 @@
 
         .hero-content h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(3.8rem, 8.5vw, 6.6rem);
-            line-height: .9;
-            color: #fff0f2;
-            text-shadow: 0 5px 28px rgba(20,0,7,.32);
-            margin-bottom: 20px;
+            font-size: clamp(4.2rem, 11vw, 8rem);
+            line-height: .95;
+            color: #f9dce2;
+            text-shadow: 0 7px 35px rgba(20,0,7,.35);
+            margin-bottom: 24px;
         }
 
         .hero-content p {
-            font-size: clamp(.72rem, 1.8vw, .92rem);
+            font-size: clamp(.78rem, 2vw, 1rem);
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 23px;
-            color: rgba(255,244,245,.96);
+            margin-bottom: 30px;
+            color: rgba(255,244,245,.92);
         }
 
         .date-badge {
@@ -473,13 +453,13 @@
 
         .hero-scroll {
             position: absolute;
-            bottom: 22px;
+            bottom: 26px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
-            font-size: .52rem;
-            letter-spacing: 2.8px;
-            color: rgba(255,239,242,.52);
+            font-size: .58rem;
+            letter-spacing: 3px;
+            color: rgba(255,239,242,.7);
             animation: scrollPulse 2s ease-in-out infinite;
         }
 
@@ -536,6 +516,7 @@
         .music-toggle.playing {
             box-shadow: 0 0 0 7px rgba(215,154,170,.12), 0 12px 30px rgba(45,4,13,.25);
         }
+
 
 
         section {
@@ -816,6 +797,7 @@
 
 
 
+
         /* Interactive photo story */
         .photo-story {
             padding-top: 95px;
@@ -914,6 +896,472 @@
         .memory:hover::before {
             opacity: 1;
             transform: translateY(0) scale(1);
+        }
+
+
+        /* Creative replacement sections */
+        .story-section {
+            max-width: 100%;
+            padding: 125px 5vw 115px;
+            background:
+                radial-gradient(circle at 50% 15%, rgba(215,154,170,.18), transparent 25%),
+                linear-gradient(180deg, #fffafb 0%, #fdeff2 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .story-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(4.2rem, 8vw, 7rem);
+            color: #6a1024;
+            font-weight: 400;
+            line-height: .9;
+        }
+
+        .story-section .section-intro {
+            max-width: 650px;
+            margin: 16px auto 70px;
+            color: #856973;
+        }
+
+        .story-timeline {
+            max-width: 930px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 82px 1fr;
+            gap: 0 24px;
+            position: relative;
+        }
+
+        .story-timeline::before {
+            content: "";
+            position: absolute;
+            left: 40px;
+            top: 18px;
+            bottom: 18px;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(184,63,89,.35), transparent);
+        }
+
+        .story-node {
+            width: 82px;
+            height: 82px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid rgba(184,63,89,.18);
+            box-shadow: 0 15px 32px rgba(91,16,32,.09);
+            position: relative;
+            z-index: 2;
+            color: var(--accent-color);
+            font-size: .68rem;
+            letter-spacing: 1.5px;
+        }
+
+        .story-node span {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #fbecef;
+            color: #8c3148;
+            font-weight: 600;
+        }
+
+        .story-card {
+            margin-bottom: 28px;
+            padding: 30px 34px;
+            border-radius: 26px;
+            background: rgba(255,255,255,.82);
+            border: 1px solid rgba(184,63,89,.13);
+            box-shadow: 0 20px 55px rgba(91,16,32,.075);
+            text-align: left;
+            transition: transform .4s ease, box-shadow .4s ease;
+        }
+
+        .story-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 28px 70px rgba(91,16,32,.12);
+        }
+
+        .story-card-accent {
+            background: linear-gradient(145deg, #fff6f8, #fbe9ed);
+        }
+
+        .story-mini-icon {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .story-label {
+            font-size: .58rem;
+            letter-spacing: 2.7px;
+            color: #a14a60;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .story-card h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.65rem;
+            color: #6a1024;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .story-card p {
+            color: #795d66;
+            font-size: .9rem;
+            max-width: 600px;
+        }
+
+        .story-signature {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .story-signature span {
+            width: 45px;
+            height: 1px;
+            background: rgba(184,63,89,.3);
+        }
+
+        .story-signature p {
+            margin: 0;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.15rem;
+            color: #8b4052;
+        }
+
+        .story-signature b {
+            font-weight: 400;
+            color: #b83f59;
+        }
+
+        .story-orbit {
+            position: absolute;
+            border: 1px solid rgba(184,63,89,.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .orbit-one {
+            width: 420px;
+            height: 420px;
+            right: -170px;
+            top: 12%;
+        }
+
+        .orbit-two {
+            width: 260px;
+            height: 260px;
+            left: -120px;
+            bottom: 8%;
+        }
+
+        .story-star {
+            position: absolute;
+            color: rgba(184,63,89,.25);
+            animation: storyTwinkle 3s ease-in-out infinite;
+        }
+
+        .star-one { left: 12%; top: 24%; }
+        .star-two { right: 13%; bottom: 30%; animation-delay: 1.2s; }
+
+        .memory-wall-section {
+            max-width: 100%;
+            padding: 100px 5vw 115px;
+            background: #fff9fa;
+            text-align: center;
+        }
+
+        .memory-wall {
+            max-width: 1150px;
+            margin: 55px auto 0;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr .8fr 1.1fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+
+        .memory-tile {
+            position: relative;
+            min-height: 250px;
+            padding: 0;
+            border: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #f4dfe4;
+            box-shadow: 0 18px 50px rgba(91,16,32,.08);
+        }
+
+        .memory-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(.8);
+            transition: transform .7s cubic-bezier(.2,.8,.2,1), filter .4s ease;
+        }
+
+        .memory-tile::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(55,5,16,.62), transparent 60%);
+        }
+
+        .memory-tile span {
+            position: absolute;
+            z-index: 2;
+            left: 18px;
+            bottom: 16px;
+            color: #fff4f5;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.7rem;
+        }
+
+        .memory-tile:hover img {
+            transform: scale(1.08);
+            filter: saturate(1);
+        }
+
+        .tile-a { min-height: 320px; }
+        .tile-c { min-height: 290px; }
+        .tile-d { min-height: 320px; }
+
+        @keyframes storyTwinkle {
+            0%,100% { opacity: .35; transform: scale(.88) rotate(0); }
+            50% { opacity: .9; transform: scale(1.12) rotate(12deg); }
+        }
+
+
+        /* Wedding date calendar — editorial reference style */
+        .calendar-section {
+            max-width: 100%;
+            padding: 105px 4vw 120px;
+            background:
+                radial-gradient(circle at 8% 13%, rgba(215,154,170,.13), transparent 22%),
+                radial-gradient(circle at 92% 72%, rgba(184,63,89,.055), transparent 23%),
+                #fffafa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calendar-card {
+            width: min(100%, 1040px);
+            margin: 48px auto 0;
+            padding: 26px 42px 38px;
+            border-radius: 0;
+            background: rgba(255,255,255,.48);
+            border: 0;
+            border-top: 1px solid rgba(184,63,89,.11);
+            border-bottom: 1px solid rgba(184,63,89,.08);
+            box-shadow: none;
+        }
+
+        .calendar-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0 24px;
+            border-bottom: 1px solid rgba(184,63,89,.12);
+        }
+
+        .calendar-head > div:first-child {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .calendar-month {
+            font-size: .75rem;
+            letter-spacing: 4px;
+            color: #a14a60;
+            font-weight: 500;
+        }
+
+        .calendar-head strong {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.6rem, 5vw, 4rem);
+            line-height: 1;
+            font-weight: 400;
+            color: #6a1024;
+        }
+
+        .calendar-flourish {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #faf0f2;
+            color: #a52e49;
+            font-size: .85rem;
+            border: 1px solid rgba(184,63,89,.08);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0;
+        }
+
+        .calendar-weekdays {
+            margin: 27px 0 15px;
+        }
+
+        .calendar-weekdays span {
+            text-align: center;
+            font-size: .6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #a06f79;
+            font-weight: 500;
+        }
+
+        .calendar-days {
+            grid-auto-rows: 72px;
+        }
+
+        .calendar-empty { min-width: 0; }
+
+        .calendar-day {
+            min-width: 0;
+            position: relative;
+            display: grid;
+            place-items: center;
+            border: 1px solid transparent;
+            border-radius: 18px;
+            background: transparent;
+            color: #805d67;
+            cursor: default;
+            transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+            font: inherit;
+        }
+
+        .calendar-day em {
+            font-style: normal;
+            font-size: .88rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        button.calendar-day {
+            cursor: pointer;
+        }
+
+        button.calendar-day:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,.9);
+            box-shadow: 0 11px 25px rgba(91,16,32,.08);
+        }
+
+        .wedding-day {
+            color: #fff;
+            border: 0;
+            margin: 6px 7px;
+            box-shadow: 0 13px 26px rgba(91,16,32,.15);
+        }
+
+        .wedding-day em {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .wedding-day i {
+            position: absolute;
+            right: 7px;
+            top: 5px;
+            font-style: normal;
+            font-size: .48rem;
+            opacity: .88;
+        }
+
+        .ceremony-day {
+            background: linear-gradient(145deg, #7b1530, #a82f4b);
+        }
+
+        .reception-day {
+            background: linear-gradient(145deg, #bd6a7f, #d79aaa);
+        }
+
+        .calendar-events {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(184,63,89,.1);
+        }
+
+        .calendar-event {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+            padding: 14px 16px;
+            border: 1px solid rgba(184,63,89,.1);
+            border-radius: 14px;
+            background: rgba(255,255,255,.72);
+            cursor: pointer;
+            font: inherit;
+            transition: transform .23s ease, background .23s ease, box-shadow .23s ease;
+        }
+
+        .calendar-event:hover,
+        .calendar-event.active {
+            transform: translateY(-3px);
+            background: #fff;
+            box-shadow: 0 10px 22px rgba(91,16,32,.07);
+        }
+
+        .calendar-event > div {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .calendar-event strong,
+        .calendar-event small {
+            display: block;
+        }
+
+        .calendar-event strong {
+            color: #6a1024;
+            font-size: .77rem;
+        }
+
+        .calendar-event small {
+            color: #896a72;
+            font-size: .67rem;
+            margin-top: 2px;
+        }
+
+        .calendar-event > i {
+            color: #b83f59;
+            font-style: normal;
+        }
+
+        .event-dot {
+            width: 9px;
+            height: 9px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+        }
+
+        .ceremony-dot { background: #8e2039; }
+        .reception-dot { background: #d79aaa; }
+
+        .calendar-section .section-intro {
+            color: #876a72;
+            margin-top: 12px;
         }
 
         /* "When & Where" wow-factor treatment */
@@ -1597,6 +2045,7 @@
             }
         }
 
+
         .lightbox-open { overflow: hidden; }
 
         .photo-lightbox {
@@ -1700,23 +2149,8 @@
             }
 
             .hero-content {
-                width: 96vw;
-                padding: 30px 16px 28px;
-                background: rgba(62,7,19,.34);
-            }
-
-            header {
-                padding-bottom: 7vh;
-                background-position: 50% center;
-            }
-
-            header .hero-frame {
-                inset: 12px;
-            }
-
-            .hero-photo-caption {
-                letter-spacing: 2.7px;
-                font-size: .55rem;
+                padding: 42px 18px;
+                background: linear-gradient(145deg, rgba(57,8,19,.68), rgba(91,16,32,.52));
             }            .calendar-section { padding: 90px 20px; }
             .calendar-section { padding: 85px 16px 95px; }
             .calendar-card {
@@ -1839,6 +2273,7 @@
                 border-radius: 22px;
             }
 
+
             .hero-scroll { bottom: 17px; }
 
             .couple-container { grid-template-columns: 1fr; gap: 15px; }
@@ -1854,6 +2289,7 @@
     <button class="music-toggle" id="musicToggle" aria-label="Play celebration music" title="Play celebration music">
         <i class="fa-solid fa-music"></i>
     </button>
+
 
 
     <!-- Opening Envelope -->
@@ -1897,9 +2333,8 @@
 
     <!-- Hero Header -->
     <header>
-        <div class="hero-frame" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="hero-photo-caption">A celebration of love & togetherness</div>
+            <div class="eyebrow">A celebration of love & togetherness</div>
             <h1>Jishnu & Sruthi</h1>
             <p>WARMLY INVITE YOU TO CELEBRATE THEIR WEDDING</p>
             <div class="date-badge">November 06 - 07, 2026</div>
@@ -1908,6 +2343,8 @@
     </header>
 
     <!-- Couple Section -->
+    <!-- Our Story -->
+
     <!-- Memory Wall -->
     <section class="reveal-section memory-wall-section">
         <div class="section-kicker reveal">Little glimpses</div>
@@ -1980,6 +2417,40 @@
             <span></span>
         </div>
     </section>
+
+    <div class="celebration reveal-section">
+        <div class="music-note">♪ ♫ ♪</div>
+        <h2 class="reveal">Come Celebrate With Us</h2>
+        <p class="reveal">Two hearts, one beautiful journey, and two days filled with love, laughter, music and cherished memories.</p>
+    </div>
+
+    <!-- Countdown Section -->
+    <div class="countdown-section">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <h2>Counting Down To The Big Day</h2>
+            <div class="divider" style="background-color: var(--primary-color);"></div>
+            <div class="countdown-grid">
+                <div class="countdown-box">
+                    <span id="days">00</span>
+                    <p>Days</p>
+                </div>
+                <div class="countdown-box">
+                    <span id="hours">00</span>
+                    <p>Hours</p>
+                </div>
+                <div class="countdown-box">
+                    <span id="minutes">00</span>
+                    <p>Minutes</p>
+                </div>
+                <div class="countdown-box">
+                    <span id="seconds">00</span>
+                    <p>Seconds</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Section -->
 
     <!-- Wedding Calendar -->
     <section class="reveal-section calendar-section">
@@ -2143,6 +2614,81 @@
     <!-- JavaScript for Countdown and RSVP -->
     <script>
 
+
+
+        // Memory wall tiles use the same lightbox treatment.
+        document.querySelectorAll('.memory-tile').forEach(tile => {
+            tile.addEventListener('click', () => {
+                const image = tile.querySelector('img');
+                const caption = tile.querySelector('span')?.innerText || '';
+                lightbox.querySelector('.lightbox-image').src = image.src;
+                lightbox.querySelector('.lightbox-image').alt = image.alt;
+                lightbox.querySelector('.lightbox-caption').textContent = caption;
+                lightbox.classList.add('show');
+                document.body.classList.add('lightbox-open');
+            });
+        });
+
+        // Photo lightbox: tap/click a photo for a full-screen view.
+        const photoItems = document.querySelectorAll('.memory');
+
+        const lightbox = document.createElement('div');
+        lightbox.className = 'photo-lightbox';
+        lightbox.innerHTML = `
+            <button class="lightbox-close" aria-label="Close photo">×</button>
+            <img class="lightbox-image" alt="">
+            <div class="lightbox-caption"></div>
+        `;
+        document.body.appendChild(lightbox);
+
+        photoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const image = item.querySelector('img');
+                const caption = item.querySelector('figcaption')?.innerText || '';
+                lightbox.querySelector('.lightbox-image').src = image.src;
+                lightbox.querySelector('.lightbox-image').alt = image.alt;
+                lightbox.querySelector('.lightbox-caption').textContent = caption;
+                lightbox.classList.add('show');
+                document.body.classList.add('lightbox-open');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            document.body.classList.remove('lightbox-open');
+        }
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox || event.target.closest('.lightbox-close')) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeLightbox();
+        });
+
+
+        // Calendar interactions: clicking an event highlights its date.
+        document.querySelectorAll('.calendar-event').forEach(eventButton => {
+            eventButton.addEventListener('click', () => {
+                document.querySelectorAll('.calendar-event').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.wedding-day').forEach(item => item.style.transform = '');
+
+                eventButton.classList.add('active');
+                const target = document.querySelector(eventButton.dataset.target);
+                if (target) {
+                    target.animate(
+                        [
+                            { transform: 'scale(1)' },
+                            { transform: 'scale(1.14)' },
+                            { transform: 'scale(1)' }
+                        ],
+                        { duration: 550, easing: 'cubic-bezier(.2,.8,.2,1)' }
+                    );
+                }
+            });
+        });
 
         // Gentle scroll reveal
         const revealItems = document.querySelectorAll('.reveal');
