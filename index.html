@@ -487,6 +487,35 @@
         .music-toggle:hover { transform: scale(1.08) rotate(-8deg); background: #7b2036; }
 
         .music-toggle.playing i { animation: musicPulse .8s ease-in-out infinite alternate; }
+        .music-toggle::after {
+            content: "music";
+            position: absolute;
+            right: 54px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(59,7,19,.78);
+            color: rgba(255,239,242,.82);
+            font-size: .55rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s ease, transform .25s ease;
+        }
+
+        .music-toggle:hover::after,
+        .music-toggle.playing::after {
+            opacity: 1;
+            transform: translateY(-50%) translateX(-3px);
+        }
+
+        .music-toggle.playing {
+            box-shadow: 0 0 0 7px rgba(215,154,170,.12), 0 12px 30px rgba(45,4,13,.25);
+        }
+
+
 
         section {
             max-width: 1120px;
@@ -764,6 +793,107 @@
 
         footer span { font-size: .8rem; letter-spacing: 1.5px; color: rgba(255,235,239,.62); }
 
+
+
+        /* Interactive photo story */
+        .photo-story {
+            padding-top: 95px;
+            padding-bottom: 115px;
+        }
+
+        .photo-mosaic {
+            max-width: 980px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            grid-template-rows: 300px 300px;
+            gap: 18px;
+        }
+
+        .memory {
+            position: relative;
+            margin: 0;
+            min-height: 260px;
+            border-radius: 26px;
+            overflow: hidden;
+            background: #f7e6e9;
+            box-shadow: 0 20px 55px rgba(91,16,32,.11);
+            border: 1px solid rgba(184,63,89,.13);
+            cursor: pointer;
+        }
+
+        .memory img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(.84) contrast(.98);
+            transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s ease;
+        }
+
+        .memory::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(49,5,14,.72), rgba(49,5,14,0) 58%);
+            opacity: .9;
+            transition: opacity .35s ease;
+        }
+
+        .memory:hover img {
+            transform: scale(1.08);
+            filter: saturate(1) contrast(1);
+        }
+
+        .memory:hover::after { opacity: 1; }
+
+        .memory figcaption {
+            position: absolute;
+            z-index: 2;
+            left: 22px;
+            bottom: 18px;
+            color: #fff6f7;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.9rem;
+            line-height: 1.05;
+            text-shadow: 0 2px 12px rgba(0,0,0,.25);
+        }
+
+        .memory figcaption span {
+            display: block;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: .56rem;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: #f6ccd4;
+        }
+
+        .memory-large {
+            grid-row: span 2;
+        }
+
+        .memory-wide {
+            grid-column: 2;
+        }
+
+        .memory::before {
+            content: "♡";
+            position: absolute;
+            z-index: 3;
+            right: 18px;
+            top: 15px;
+            color: rgba(255,241,244,.82);
+            font-size: 1.25rem;
+            opacity: 0;
+            transform: translateY(-8px) scale(.85);
+            transition: all .3s ease;
+        }
+
+        .memory:hover::before {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
 
         /* "When & Where" wow-factor treatment */
         .moments-section {
@@ -1446,6 +1576,69 @@
             }
         }
 
+
+        .lightbox-open { overflow: hidden; }
+
+        .photo-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9997;
+            display: grid;
+            place-items: center;
+            padding: 7vh 6vw;
+            background: rgba(35,3,10,.92);
+            backdrop-filter: blur(13px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .35s ease, visibility .35s ease;
+        }
+
+        .photo-lightbox.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .lightbox-image {
+            max-width: min(100%, 1000px);
+            max-height: 76vh;
+            object-fit: contain;
+            border-radius: 18px;
+            box-shadow: 0 30px 100px rgba(0,0,0,.5);
+            transform: scale(.94);
+            transition: transform .45s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .photo-lightbox.show .lightbox-image { transform: scale(1); }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(90vw, 700px);
+            text-align: center;
+            color: #fae8eb;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            width: 46px;
+            height: 46px;
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 50%;
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
         @media (max-width: 700px) {
             .reference-topline {
                 top: 4vh;
@@ -1486,7 +1679,20 @@
                 transform: translate(58px, -55px) rotate(12deg);
             }
 
-            .hero-content { padding: 48px 20px; }            .moments-section { padding-top: 90px; padding-bottom: 90px; }
+            .hero-content { padding: 48px 20px; }            .photo-story { padding-top: 78px; padding-bottom: 88px; }
+            .photo-mosaic {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 14px;
+                margin-top: 36px;
+            }
+            .memory, .memory-large, .memory-wide {
+                grid-column: auto;
+                grid-row: auto;
+                min-height: 240px;
+            }
+
+            .moments-section { padding-top: 90px; padding-bottom: 90px; }
             .moments-section::before { display: none; }
             .event-journey {
                 grid-template-columns: 1fr;
@@ -1596,6 +1802,36 @@
     </section>
 
     <!-- Celebration Section -->
+
+    <!-- Photo Story -->
+    <section class="reveal-section photo-story">
+        <div class="section-kicker reveal">A few frames from our story</div>
+        <h2 class="reveal">Love in Frames</h2>
+        <p class="section-intro reveal">A little glimpse of the joy, laughter and memories that brought us here.</p>
+
+        <div class="photo-mosaic reveal">
+            <figure class="memory memory-large">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=88" alt="Wedding couple portrait">
+                <figcaption><span>Chapter I</span> The beginning</figcaption>
+            </figure>
+
+            <figure class="memory">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=88" alt="Wedding celebration">
+                <figcaption><span>Chapter II</span> The laughter</figcaption>
+            </figure>
+
+            <figure class="memory">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=88" alt="Wedding rings">
+                <figcaption><span>Chapter III</span> The little details</figcaption>
+            </figure>
+
+            <figure class="memory memory-wide">
+                <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1200&q=88" alt="Wedding celebration with flowers">
+                <figcaption><span>Chapter IV</span> And the celebration begins…</figcaption>
+            </figure>
+        </div>
+    </section>
+
     <div class="celebration reveal-section">
         <div class="music-note">♪ ♫ ♪</div>
         <h2 class="reveal">Come Celebrate With Us</h2>
@@ -1682,7 +1918,7 @@
                         <div>
                             <span>Venue</span>
                             <strong>Sreeprabha Auditorium</strong>
-                            <small>Payyanur, Kannur, Kerala</small>
+                            <small>Subrahmanya Swami Temple Road, Payyanur, Kerala</small>
                         </div>
                     </div>
                 </div>
@@ -1712,6 +1948,46 @@
 
     <!-- JavaScript for Countdown and RSVP -->
     <script>
+
+
+        // Photo lightbox: tap/click a photo for a full-screen view.
+        const photoItems = document.querySelectorAll('.memory');
+
+        const lightbox = document.createElement('div');
+        lightbox.className = 'photo-lightbox';
+        lightbox.innerHTML = `
+            <button class="lightbox-close" aria-label="Close photo">×</button>
+            <img class="lightbox-image" alt="">
+            <div class="lightbox-caption"></div>
+        `;
+        document.body.appendChild(lightbox);
+
+        photoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const image = item.querySelector('img');
+                const caption = item.querySelector('figcaption')?.innerText || '';
+                lightbox.querySelector('.lightbox-image').src = image.src;
+                lightbox.querySelector('.lightbox-image').alt = image.alt;
+                lightbox.querySelector('.lightbox-caption').textContent = caption;
+                lightbox.classList.add('show');
+                document.body.classList.add('lightbox-open');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            document.body.classList.remove('lightbox-open');
+        }
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox || event.target.closest('.lightbox-close')) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeLightbox();
+        });
 
         // Gentle scroll reveal
         const revealItems = document.querySelectorAll('.reveal');
@@ -1759,42 +2035,112 @@
             setTimeout(() => heart.remove(), 950);
         });
 
-        // A tiny romantic chime generated in-browser. No external audio asset required.
+        // Wedding-style instrumental music generated in-browser.
+        // Starts only after the guest taps the music button (browser autoplay policy).
         let audioContext;
         let musicPlaying = false;
-        let musicInterval;
+        let musicTimer;
+        let musicStep = 0;
 
-        function playChime() {
+        const melody = [
+            523.25, 659.25, 783.99, 659.25,
+            587.33, 698.46, 880.00, 698.46,
+            659.25, 783.99, 987.77, 783.99,
+            587.33, 659.25, 783.99, 698.46
+        ];
+
+        const bass = [130.81, 146.83, 164.81, 146.83];
+
+        function ensureAudio() {
             audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
-            const now = audioContext.currentTime;
-            [523.25, 659.25, 783.99].forEach((frequency, index) => {
-                const oscillator = audioContext.createOscillator();
-                const gain = audioContext.createGain();
-                oscillator.type = 'sine';
-                oscillator.frequency.value = frequency;
-                gain.gain.setValueAtTime(0, now + index * .16);
-                gain.gain.linearRampToValueAtTime(.045, now + index * .16 + .04);
-                gain.gain.exponentialRampToValueAtTime(.001, now + index * .16 + .7);
-                oscillator.connect(gain);
-                gain.connect(audioContext.destination);
-                oscillator.start(now + index * .16);
-                oscillator.stop(now + index * .16 + .72);
-            });
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+        }
+
+        function playNote(frequency, duration, volume, type='sine', offset=0) {
+            const now = audioContext.currentTime + offset;
+
+            const oscillator = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+
+            oscillator.type = type;
+            oscillator.frequency.setValueAtTime(frequency, now);
+
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(type === 'triangle' ? 1800 : 2600, now);
+            filter.Q.value = .7;
+
+            gain.gain.setValueAtTime(.0001, now);
+            gain.gain.exponentialRampToValueAtTime(volume, now + .035);
+            gain.gain.exponentialRampToValueAtTime(.0001, now + duration);
+
+            oscillator.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+
+            oscillator.start(now);
+            oscillator.stop(now + duration + .03);
+        }
+
+        function playWeddingPhrase() {
+            if (!musicPlaying) return;
+
+            const step = musicStep % melody.length;
+            const note = melody[step];
+            const bar = Math.floor(step / 4);
+            const beatMs = 560;
+
+            // Bell-like lead / wedding sparkle.
+            playNote(note, 1.7, .035, 'sine');
+
+            // Soft harmony every second beat.
+            if (step % 2 === 0) {
+                playNote(note * 1.5, 1.25, .014, 'triangle', .03);
+            }
+
+            // Warm low pad on every 4th step.
+            if (step % 4 === 0) {
+                playNote(bass[bar % bass.length], 2.4, .02, 'triangle', .02);
+            }
+
+            // Gentle higher answering note.
+            if (step % 4 === 2) {
+                playNote(note * 2, 1.0, .008, 'sine', .08);
+            }
+
+            musicStep++;
+            musicTimer = setTimeout(playWeddingPhrase, beatMs);
+        }
+
+        function startWeddingMusic() {
+            ensureAudio();
+            musicPlaying = true;
+            musicStep = 0;
+            playWeddingPhrase();
+            musicToggle.classList.add('playing');
+            musicToggle.setAttribute('aria-label', 'Pause wedding music');
+            musicToggle.title = 'Pause wedding music';
+            musicToggle.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        }
+
+        function stopWeddingMusic() {
+            musicPlaying = false;
+            clearTimeout(musicTimer);
+            musicToggle.classList.remove('playing');
+            musicToggle.setAttribute('aria-label', 'Play wedding music');
+            musicToggle.title = 'Play wedding music';
+            musicToggle.innerHTML = '<i class="fa-solid fa-music"></i>';
         }
 
         const musicToggle = document.getElementById('musicToggle');
         musicToggle.addEventListener('click', (event) => {
             event.stopPropagation();
-            if (!musicPlaying) {
-                playChime();
-                musicPlaying = true;
-                musicToggle.classList.add('playing');
-                musicToggle.innerHTML = '<i class="fa-solid fa-music"></i>';
-                musicInterval = setInterval(playChime, 5200);
+            if (musicPlaying) {
+                stopWeddingMusic();
             } else {
-                musicPlaying = false;
-                musicToggle.classList.remove('playing');
-                clearInterval(musicInterval);
+                startWeddingMusic();
             }
         });
 
