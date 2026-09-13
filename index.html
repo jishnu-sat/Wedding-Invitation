@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jishnu &amp; Sruthi — 6 November</title>
+<title>Jishnu &amp; Sruthi - Wedding Invitation</title>
 <meta name="description" content="Jishnu &amp; Sruthi are getting married — 6 &amp; 7 November 2026, Kozhikode &amp; Payyanur, Kerala.">
 <meta property="og:title" content="Jishnu &amp; Sruthi — 6 &amp; 7 November 2026">
 <meta property="og:description" content="Come eat, dance, cry a little.">
@@ -74,6 +74,7 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .music i:nth-child(3){animation-delay:.36s}
 .music.on i{animation-play-state:running}
 .music b{display:none}
+.music .bars{display:flex;align-items:center;justify-content:center;gap:3px}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:grid;align-content:center;justify-items:center;text-align:center;overflow:hidden;
@@ -94,8 +95,9 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .badge s{text-decoration:none;color:var(--gold)}
 .scrollcue{position:relative;font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:#b3898f;padding-bottom:24px;animation:drift 2.6s ease-in-out infinite}
 
-/* hero photo — hidden on mobile by default, only shown at desktop breakpoint */
-.hero-photo{display:none}
+/* hero illustration — visible on mobile and desktop, no card/frame since PNG has transparent bg */
+.illustration{position:relative;width:100%;max-width:280px;margin:6px auto 0;padding:0 24px}
+.illustration img{width:100%;height:auto;display:block;filter:drop-shadow(0 22px 28px rgba(58,9,18,.25));transition:transform .18s ease}
 
 /* marquee */
 .marquee{overflow:hidden;padding:13px 0;background:var(--ink)}
@@ -123,12 +125,6 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .photoband img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 5%;display:block;
   filter:saturate(.72) contrast(1.04) sepia(.14) brightness(1.02)}
 .ph{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--soft)}
-.tilt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block;
-  filter:saturate(.76) contrast(1.03) sepia(.12)}
-.tilt::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(to top,rgba(58,9,18,.42),transparent 46%),
-             radial-gradient(100% 80% at 50% 40%,transparent 52%,rgba(44,7,16,.3));
-  box-shadow:inset 0 0 0 1px rgba(201,160,106,.5)}
 
 /* calendar */
 .section{padding:52px 26px;text-align:center}
@@ -173,7 +169,7 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .then div{width:56px;height:56px;border-radius:50%;background:#fff;border:1px solid rgba(107,18,38,.18);display:grid;place-items:center;
   font-family:var(--serif);font-size:17px;color:var(--accent);animation:drift 3.4s ease-in-out infinite}
 
-footer{padding:46px 26px 48px;text-align:center;background:linear-gradient(165deg,var(--ink-deep),#5c1020)}
+footer{padding:46px 26px 140px;text-align:center;background:linear-gradient(165deg,var(--ink-deep),#5c1020)}
 footer .glyphs{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(243,201,205,.65)}
 footer p{margin:16px 0 6px;font-family:var(--serif);font-size:clamp(30px,8vw,46px);line-height:1.1;color:#f3c9cd}
 footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255,235,239,.62)}
@@ -268,11 +264,8 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   .tagline{font-size:13px;letter-spacing:.18em}
   .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:34px;animation:rise 1s .82s both}
   .hero-actions .btn{margin:0;padding:13px 22px;font-size:12px}
-  .hero-photo{display:grid;position:relative;height:100%;place-items:center;padding:60px 76px 60px 20px}
-  .hero-photo .tilt{isolation:isolate;position:relative;width:100%;max-width:400px;aspect-ratio:.82;border-radius:220px 220px 12px 12px;overflow:hidden;
-    background:repeating-linear-gradient(135deg,#f2e3e0 0 10px,#f8efec 10px 20px);border:1px solid rgba(107,18,38,.12);
-    box-shadow:0 30px 70px rgba(107,18,38,.14);display:grid;place-items:center;transition:transform .18s ease}
-  .hero-photo .tilt img{object-position:50% 12%}
+  .illustration{max-width:none;width:auto;margin:0;padding:60px 76px 60px 20px;position:relative;height:100%;display:grid;place-items:center}
+  .illustration img{max-width:400px;width:100%;height:auto;filter:drop-shadow(0 34px 46px rgba(58,9,18,.22))}
   .scrollcue{display:none}
   .glow{position:fixed;left:0;top:0;width:440px;height:440px;border-radius:50%;pointer-events:none;z-index:1;
     background:radial-gradient(circle,rgba(216,167,174,.24),transparent 62%);will-change:transform}
@@ -411,10 +404,8 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
     </div>
   </div>
 
-  <div class="hero-photo">
-    <div class="tilt" id="tilt">
-      <img src="images/couple-1.jpg" alt="Jishnu and Sruthi">
-    </div>
+  <div class="illustration">
+    <img id="tilt" src="images/couple-illustration.png" alt="Jishnu and Sruthi illustration">
   </div>
 
   <div class="scrollcue">scroll ↓</div>
@@ -422,8 +413,8 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 
 <div class="marquee" aria-hidden="true">
   <div>
-    <span>Jishnu &amp; Sruthi</span><s>✦</s><span>06 · 07 November 2026</span><s>✦</s><span>Kozhikode &amp; Payyanur</span><s>✦</s>
-    <span>Jishnu &amp; Sruthi</span><s>✦</s><span>06 · 07 November 2026</span><s>✦</s><span>Kozhikode &amp; Payyanur</span><s>✦</s>
+    <span>Jishnu &amp; Sruthi</span><s>✦</s><span>06 · 07 November 2026</span><s>✦</s>
+    <span>Jishnu &amp; Sruthi</span><s>✦</s><span>06 · 07 November 2026</span><s>✦</s>
   </div>
 </div>
 
