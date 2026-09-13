@@ -151,21 +151,26 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .card .when{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-top:6px}
 .card h3{margin:8px 0 10px;font-size:clamp(30px,7vw,44px);line-height:1}
 .pill{display:inline-block;padding:7px 12px;border-radius:999px;background:#fbe9ec;color:#8d364a;font-size:11px;font-weight:500}
-.card .info{margin-top:20px;padding-top:16px;border-top:1px solid rgba(107,18,38,.12)}
+.timeline{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.timeline li{display:flex;align-items:center;gap:10px;font-size:12.5px;padding-bottom:9px;border-bottom:1px dashed rgba(107,18,38,.14)}
+.timeline li:last-child{border-bottom:0;padding-bottom:0}
+.timeline .dot{width:6px;height:6px;border-radius:50%;flex:none}
+.timeline .t{flex:none;width:66px;font-family:var(--mono);font-size:10px;letter-spacing:.02em;color:var(--accent)}
+.timeline .l{color:var(--ink);font-weight:500}
+.card .info{margin-top:20px;padding-top:16px;border-top:1px solid rgba(107,18,38,.12);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.card .info .info-text{min-width:0}
 .card .info small.lb{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#a87f86}
-.card .info strong{display:block;margin-top:6px;font-size:15px;font-weight:500;color:var(--ink)}
-.card .info span{font-size:12.5px;line-height:1.6;color:var(--muted)}
+.card .info .addr-row{display:flex;align-items:center;gap:10px;margin-top:6px}
+.card .info .addr-icon{flex:none;font-size:24px;line-height:1}
+.card .info .addr-lines strong{display:block;font-size:15px;font-weight:500;color:var(--ink)}
+.card .info .addr-lines span{font-size:12.5px;line-height:1.6;color:var(--muted)}
+.card .info .btn{margin-top:0;flex:none}
 .btn{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 18px;border-radius:999px;background:var(--ink);color:#fff;
   text-decoration:none;font-size:11.5px;font-weight:500;border:0;cursor:pointer;font-family:inherit}
 .btn:hover{background:var(--accent)}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(107,18,38,.25)}
 .btn.ghost:hover{background:rgba(107,18,38,.06)}
-.cta-row{display:flex;align-items:center;gap:16px;margin-top:20px}
-.cta-row .btn{margin-top:0;flex:none}
-.map-thumb{flex:1;max-width:120px;aspect-ratio:1/1;border-radius:16px;overflow:hidden;display:block;
-  border:1px solid rgba(107,18,38,.15);box-shadow:0 8px 20px rgba(107,18,38,.16);transition:transform .2s ease}
-.map-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.map-thumb:hover{transform:scale(1.04)}
 .then{display:grid;place-items:center;margin:16px 0}
 .then div{width:56px;height:56px;border-radius:50%;background:#fff;border:1px solid rgba(107,18,38,.18);display:grid;place-items:center;
   font-family:var(--serif);font-size:17px;color:var(--accent);animation:drift 3.4s ease-in-out infinite}
@@ -298,9 +303,8 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   .venues{grid-template-columns:1fr 100px 1fr;align-items:center;margin-top:34px}
   .card{padding:36px 34px;border-radius:26px}
   .card h3{margin:10px 0 12px}
-  .card .info strong{font-size:17px}
-  .card .info span{font-size:13.5px}
-  .map-thumb{max-width:160px;border-radius:20px}
+  .card .info .addr-lines strong{font-size:17px}
+  .card .info .addr-lines span{font-size:13.5px}
   .then{margin:0}
   .then div{width:70px;height:70px;font-size:19px}
   .stickybar{display:none}
@@ -446,16 +450,23 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
       <div class="when">friday · 06 nov</div>
       <h3>Marriage Ceremony</h3>
       <div class="pill">Muhurtham · 1:20 – 2:00 PM</div>
+      <ul class="timeline">
+        <li><i class="dot" style="background:#8e2039"></i><span class="t">12:45 PM</span><span class="l">Guests arrive</span></li>
+        <li><i class="dot" style="background:#8e2039"></i><span class="t">1:20 PM</span><span class="l">Muhurtham</span></li>
+        <li><i class="dot" style="background:#8e2039"></i><span class="t">2:00 PM</span><span class="l">Lunch</span></li>
+      </ul>
       <div class="info">
-        <small class="lb">venue</small>
-        <strong>‘Shivoham’ House</strong>
-        <span>Chelannur, Kozhikode</span>
-      </div>
-      <div class="cta-row">
+        <div class="info-text">
+          <small class="lb">venue</small>
+          <div class="addr-row">
+            <span class="addr-icon" aria-hidden="true">🏠</span>
+            <div class="addr-lines">
+              <strong>‘Shivoham’ House</strong>
+              <span>Chelannur, Kozhikode</span>
+            </div>
+          </div>
+        </div>
         <a class="btn" href="https://maps.app.goo.gl/HYz6mXHwai9Pw2UUA?g_st=ac" target="_blank" rel="noopener">Get directions →</a>
-        <a class="map-thumb" href="https://maps.app.goo.gl/HYz6mXHwai9Pw2UUA?g_st=ac" target="_blank" rel="noopener">
-          <img src="images/map-ceremony.jpg" alt="Map to Shivoham House, Chelannur">
-        </a>
       </div>
     </article>
 
@@ -467,16 +478,23 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
       <div class="when">saturday · 07 nov</div>
       <h3>Wedding Reception</h3>
       <div class="pill">11:30 AM – 2:00 PM</div>
+      <ul class="timeline">
+        <li><i class="dot" style="background:var(--blush)"></i><span class="t">11:00 AM</span><span class="l">Guests arrive</span></li>
+        <li><i class="dot" style="background:var(--blush)"></i><span class="t">11:30 AM</span><span class="l">Reception begins</span></li>
+        <li><i class="dot" style="background:var(--blush)"></i><span class="t">1:00 PM</span><span class="l">Lunch</span></li>
+      </ul>
       <div class="info">
-        <small class="lb">venue</small>
-        <strong>Sreeprabha Auditorium</strong>
-        <span>Payyanur, Kannur</span>
-      </div>
-      <div class="cta-row">
+        <div class="info-text">
+          <small class="lb">venue</small>
+          <div class="addr-row">
+            <span class="addr-icon" aria-hidden="true">🏛️</span>
+            <div class="addr-lines">
+              <strong>Sreeprabha Auditorium</strong>
+              <span>Payyanur, Kannur</span>
+            </div>
+          </div>
+        </div>
         <a class="btn" href="https://maps.app.goo.gl/ZwyRaYiQ4gM2jgMC9" target="_blank" rel="noopener">Open in Maps →</a>
-        <a class="map-thumb" href="https://maps.app.goo.gl/ZwyRaYiQ4gM2jgMC9" target="_blank" rel="noopener">
-          <img src="images/map-reception.jpg" alt="Map to Sreeprabha Auditorium, Payyanur">
-        </a>
       </div>
     </article>
   </div>
