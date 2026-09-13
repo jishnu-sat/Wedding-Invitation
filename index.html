@@ -100,7 +100,7 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .illustration::before{content:"";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
   width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:0;
   background:radial-gradient(circle,rgba(184,63,89,.16),rgba(184,63,89,.04) 58%,transparent 74%)}
-.illustration img{width:100%;height:auto;display:block;position:relative;z-index:1;filter:drop-shadow(0 22px 28px rgba(58,9,18,.25));transition:transform .18s ease}
+.illustration img{margin-top:-50px;width:100%;height:auto;display:block;position:relative;z-index:1;filter:drop-shadow(0 22px 28px rgba(58,9,18,.25));transition:transform .18s ease}
 
 /* marquee */
 .marquee{overflow:hidden;padding:13px 0;background:var(--ink);opacity:0.95}
@@ -376,7 +376,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
     <div class="rule" style="animation:rise .9s .6s both"></div>
     <div class="lede-row" style="animation:rise .9s .7s both">
       <div class="line" aria-hidden="true"></div>
-      <p class="tagline">are getting married<br>Come eat, dance, cry a little</p>
+      <p class="tagline">are getting married.<br>Come eat, dance, cry a little</p>
     </div>
     <div class="badge" style="animation:rise .9s .8s both"><s>✦</s>FRI 06 &amp; SAT 07 NOV 2026<s>✦</s></div>
     <div class="hero-actions">
@@ -814,7 +814,7 @@ if (DESKTOP_FINE && !REDUCE_MOTION){
 var bgm = document.getElementById("bgm");
 var playing = false, userPaused = false;
 var btn = document.getElementById("music"), label = document.getElementById("musicLabel");
-bgm.volume = 0.1;
+bgm.volume = 0.2;
 bgm.addEventListener("ended", function(){
   playing = false;
   btn.classList.remove("on"); label.textContent = "play music"; btn.setAttribute("aria-label","Play music");
