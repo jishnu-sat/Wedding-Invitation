@@ -40,14 +40,24 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .envelope .frame{position:absolute;inset:16px;border:1px solid rgba(240,215,190,.16);border-radius:16px}
 .envelope .topline{position:absolute;top:44px;left:0;right:0;text-align:center;font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:rgba(250,235,220,.6)}
 .env-scene{position:relative;width:252px;height:174px;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-.env-back{position:absolute;inset:0;border-radius:3px;background:linear-gradient(160deg,#f6efe2,#e6dac6);box-shadow:0 26px 40px rgba(0,0,0,.42)}
-.env-card{position:absolute;left:14px;right:14px;bottom:12px;top:28px;background:#fffdf7;border-radius:2px;display:grid;place-items:end center;padding:0 12px 14px;text-align:center;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.env-back{position:absolute;inset:0;border-radius:3px;
+  background:
+    repeating-linear-gradient(118deg,rgba(255,255,255,.35) 0 1px,transparent 1px 3px),
+    linear-gradient(160deg,#f6efe2,#e6dac6);
+  box-shadow:0 26px 40px rgba(0,0,0,.42)}
+.env-card{position:absolute;left:14px;right:14px;bottom:12px;top:28px;
+  background:
+    repeating-linear-gradient(105deg,rgba(0,0,0,.02) 0 1px,transparent 1px 3px),
+    #fffdf7;
+  border-radius:2px;display:grid;place-items:end center;padding:0 12px 14px;text-align:center;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
 .env-card .d{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#a08b6a;white-space:nowrap}
 .env-card .n{font-family:var(--serif);font-size:26px;line-height:1.05;color:var(--ink);margin-top:6px;white-space:nowrap}
-.env-flap{position:absolute;top:0;left:0;right:0;height:96px;background:linear-gradient(175deg,#fdf7ea,#eadcc6);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;transition:transform 1s cubic-bezier(.2,.8,.2,1);z-index:3}
-.env-seal{position:absolute;left:50%;top:82px;width:62px;height:62px;transform:translate(-50%,-50%);z-index:4;display:grid;place-items:center;border-radius:48% 52% 51% 49%;
-  background:radial-gradient(circle at 34% 26%,#b23a4d,#8c182b 60%,#5f0e1c);color:#f7dcd6;font-family:var(--serif);font-size:25px;
-  box-shadow:inset 0 3px 5px rgba(255,255,255,.2),0 8px 14px rgba(30,0,6,.4);animation:pulseRing 2.2s ease-out infinite;transition:transform .6s ease,opacity .5s ease}
+.env-flap{position:absolute;top:0;left:0;right:0;height:96px;background:linear-gradient(175deg,#fdf7ea,#eadcc6);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;transition:transform 1s cubic-bezier(.2,.8,.2,1);z-index:3;
+  filter:drop-shadow(0 5px 6px rgba(58,9,18,.22))}
+.env-seal{position:absolute;left:50%;top:83px;width:78px;height:78px;transform:translate(-50%,-50%) rotate(-4deg);z-index:4;
+  filter:drop-shadow(0 9px 12px rgba(30,0,6,.5)) drop-shadow(0 2px 3px rgba(30,0,6,.35));
+  animation:pulseRing 2.2s ease-out infinite;transition:transform .6s ease,opacity .5s ease}
+.env-seal svg{display:block;width:100%;height:100%;overflow:visible}
 .env-cta{position:absolute;bottom:54px;left:0;right:0;text-align:center;animation:drift 3s ease-in-out infinite}
 .env-cta small{display:block;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,235,220,.55)}
 .env-cta strong{display:block;font-family:var(--serif);font-weight:300;font-size:26px;color:#f2ddc9;margin-top:6px}
@@ -173,6 +183,50 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 .stickybar .btn{flex:1;margin:0;justify-content:center;padding:13px 10px;border-radius:14px}
 .hero-actions{display:none}
 
+/* ---------- wow layer: dot nav, magnetic btns, tilt cards, photo reveal, floaties, split text, to-top ---------- */
+.btn{transition:transform .22s cubic-bezier(.2,.8,.2,1),background .2s ease}
+.card{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease;transform-style:preserve-3d;will-change:transform}
+.card:hover{box-shadow:0 22px 46px rgba(107,18,38,.14)}
+
+.floaties{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.floaties span{position:absolute;bottom:-30px;opacity:.3;color:var(--blush);font-size:15px;
+  animation:floatUp linear infinite;animation-duration:var(--dur,12s);animation-delay:var(--del,0s);left:var(--x,50%)}
+@keyframes floatUp{
+  0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+  8%{opacity:.4}
+  50%{transform:translateY(-52vh) translateX(12px) rotate(12deg)}
+  92%{opacity:.22}
+  100%{transform:translateY(-100vh) translateX(-8px) rotate(-8deg);opacity:0}
+}
+
+.photoband img{transition:transform 1.7s cubic-bezier(.16,.8,.24,1)}
+.photoband img{transform:scale(1.16)}
+.photoband img.reveal-in{transform:scale(1)}
+
+.word{display:inline-block;opacity:0;transform:translateY(18px) rotate(1.2deg);
+  transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.word.in{opacity:1;transform:none}
+
+.dotnav{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:50;display:none;flex-direction:column;gap:15px}
+.dotnav button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(107,18,38,.22);cursor:pointer;
+  transition:background .3s ease,transform .3s ease;position:relative}
+.dotnav button::after{content:attr(aria-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);white-space:nowrap;
+  opacity:0;transition:opacity .2s ease;pointer-events:none;background:rgba(251,246,239,.92);padding:3px 8px;border-radius:999px}
+.dotnav button:hover::after{opacity:1}
+.dotnav button.active{background:var(--ink);transform:scale(1.5)}
+
+.totop{position:fixed;right:16px;bottom:80px;z-index:53;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--ink);color:#f6e3e6;font-size:16px;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease,background .2s ease}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+.totop:hover{background:var(--accent)}
+
+@media (prefers-reduced-motion:reduce){
+  .word{opacity:1;transform:none}
+  .photoband img{transform:scale(1)}
+}
+
 .reveal{opacity:0}
 .reveal.in{opacity:1}
 .pop{position:absolute;pointer-events:none;z-index:59;font-size:15px;color:var(--accent);transform:translate(-50%,-50%)}
@@ -192,7 +246,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   .env-card .n{font-size:34px}
   .env-card .d{font-size:12px}
   .env-flap{height:146px}
-  .env-seal{top:124px;width:86px;height:86px;font-size:34px}
+  .env-seal{top:126px;width:118px;height:118px}
   .envelope .ring{width:620px;height:620px}
   .env-cta strong{font-size:32px}
 
@@ -258,6 +312,8 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   .then div{width:70px;height:70px;font-size:19px}
   .stickybar{display:none}
   footer{padding:56px 76px}
+  .dotnav{display:flex}
+  .totop{right:30px;bottom:30px}
 }
 </style>
 </head>
@@ -266,6 +322,16 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 <div class="progress"><span id="bar"></span></div>
 <canvas id="fx"></canvas>
 <div class="glow" id="glow" aria-hidden="true"></div>
+
+<nav class="dotnav" aria-label="Section navigation">
+  <button data-dot="hero" aria-label="Home"></button>
+  <button data-dot="count" aria-label="Countdown"></button>
+  <button data-dot="photo" aria-label="Photo"></button>
+  <button data-dot="cal" aria-label="Dates"></button>
+  <button data-dot="venue" aria-label="Venues"></button>
+  <button data-dot="footer" aria-label="End"></button>
+</nav>
+<button class="totop" id="totop" aria-label="Back to top">↑</button>
 
 <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the invitation">
   <div class="ring" aria-hidden="true"></div>
@@ -280,7 +346,31 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
       </div>
     </div>
     <div class="env-flap"></div>
-    <div class="env-seal" aria-hidden="true">JS</div>
+    <div class="env-seal" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <defs>
+          <radialGradient id="waxOuter" cx="34%" cy="26%" r="80%">
+            <stop offset="0%" stop-color="#d8586f"/>
+            <stop offset="45%" stop-color="#a01f36"/>
+            <stop offset="100%" stop-color="#520d1a"/>
+          </radialGradient>
+          <radialGradient id="waxInner" cx="36%" cy="30%" r="78%">
+            <stop offset="0%" stop-color="#c53a51"/>
+            <stop offset="55%" stop-color="#831526"/>
+            <stop offset="100%" stop-color="#4a0d19"/>
+          </radialGradient>
+        </defs>
+        <path d="M 96.80,61.60 C 96.80,62.24 96.65,62.89 96.40,63.51 C 96.15,64.13 95.74,64.74 95.29,65.31 C 94.83,65.88 94.25,66.42 93.68,66.93 C 93.12,67.45 92.47,67.92 91.90,68.38 C 91.33,68.84 90.74,69.27 90.27,69.71 C 89.80,70.15 89.37,70.58 89.06,71.04 C 88.75,71.51 88.54,71.98 88.42,72.51 C 88.30,73.04 88.29,73.60 88.33,74.21 C 88.37,74.83 88.52,75.50 88.64,76.19 C 88.77,76.89 88.97,77.65 89.10,78.40 C 89.22,79.15 89.37,79.95 89.40,80.69 C 89.43,81.44 89.42,82.20 89.28,82.87 C 89.14,83.55 88.91,84.19 88.57,84.73 C 88.23,85.28 87.77,85.75 87.23,86.12 C 86.70,86.49 86.04,86.76 85.36,86.96 C 84.68,87.16 83.90,87.24 83.14,87.30 C 82.39,87.37 81.58,87.33 80.83,87.32 C 80.08,87.32 79.32,87.25 78.64,87.26 C 77.96,87.27 77.32,87.28 76.75,87.39 C 76.17,87.50 75.66,87.66 75.20,87.93 C 74.74,88.20 74.34,88.56 73.96,89.00 C 73.58,89.44 73.25,89.99 72.90,90.58 C 72.55,91.16 72.23,91.85 71.86,92.50 C 71.49,93.15 71.12,93.87 70.69,94.50 C 70.26,95.12 69.79,95.75 69.28,96.24 C 68.77,96.73 68.21,97.16 67.62,97.44 C 67.03,97.72 66.39,97.88 65.75,97.91 C 65.11,97.93 64.44,97.81 63.78,97.59 C 63.13,97.37 62.46,97.00 61.83,96.60 C 61.20,96.21 60.59,95.68 60.00,95.20 C 59.41,94.72 58.86,94.16 58.32,93.70 C 57.78,93.24 57.27,92.78 56.76,92.44 C 56.25,92.10 55.76,91.82 55.24,91.66 C 54.72,91.51 54.21,91.45 53.65,91.49 C 53.09,91.52 52.51,91.68 51.89,91.87 C 51.27,92.06 50.61,92.35 49.92,92.62 C 49.24,92.88 48.51,93.20 47.78,93.44 C 47.05,93.67 46.29,93.91 45.57,94.01 C 44.85,94.12 44.11,94.17 43.45,94.08 C 42.79,93.99 42.15,93.79 41.60,93.47 C 41.05,93.15 40.56,92.70 40.15,92.17 C 39.74,91.64 39.41,90.98 39.14,90.30 C 38.88,89.63 38.70,88.85 38.54,88.10 C 38.38,87.36 38.30,86.56 38.18,85.83 C 38.06,85.11 37.99,84.39 37.84,83.76 C 37.69,83.13 37.54,82.55 37.29,82.05 C 37.04,81.55 36.74,81.13 36.34,80.76 C 35.95,80.39 35.46,80.10 34.91,79.83 C 34.36,79.55 33.71,79.35 33.04,79.11 C 32.37,78.87 31.61,78.67 30.90,78.40 C 30.19,78.13 29.43,77.86 28.77,77.51 C 28.11,77.17 27.45,76.78 26.94,76.32 C 26.43,75.86 25.98,75.34 25.68,74.77 C 25.38,74.21 25.20,73.57 25.15,72.92 C 25.10,72.27 25.19,71.57 25.36,70.88 C 25.53,70.19 25.84,69.48 26.17,68.79 C 26.49,68.11 26.93,67.42 27.31,66.78 C 27.69,66.13 28.12,65.51 28.45,64.92 C 28.79,64.32 29.10,63.76 29.29,63.21 C 29.48,62.66 29.60,62.14 29.60,61.60 C 29.60,61.06 29.48,60.54 29.29,59.99 C 29.10,59.44 28.79,58.88 28.45,58.28 C 28.12,57.69 27.69,57.07 27.31,56.42 C 26.93,55.78 26.49,55.09 26.17,54.41 C 25.84,53.72 25.53,53.01 25.36,52.32 C 25.19,51.63 25.10,50.93 25.15,50.28 C 25.20,49.63 25.38,48.99 25.68,48.43 C 25.98,47.86 26.43,47.34 26.94,46.88 C 27.45,46.42 28.11,46.03 28.77,45.69 C 29.43,45.34 30.19,45.07 30.90,44.80 C 31.61,44.53 32.37,44.33 33.04,44.09 C 33.71,43.85 34.36,43.65 34.91,43.37 C 35.46,43.10 35.95,42.81 36.34,42.44 C 36.74,42.07 37.04,41.65 37.29,41.15 C 37.54,40.65 37.69,40.07 37.84,39.44 C 37.99,38.81 38.06,38.09 38.18,37.37 C 38.30,36.64 38.38,35.84 38.54,35.10 C 38.70,34.35 38.88,33.57 39.14,32.90 C 39.41,32.22 39.74,31.56 40.15,31.03 C 40.56,30.50 41.05,30.05 41.60,29.73 C 42.15,29.41 42.79,29.21 43.45,29.12 C 44.11,29.03 44.85,29.08 45.57,29.19 C 46.29,29.29 47.05,29.53 47.78,29.76 C 48.51,30.00 49.24,30.32 49.92,30.58 C 50.61,30.85 51.27,31.14 51.89,31.33 C 52.51,31.52 53.09,31.68 53.65,31.71 C 54.21,31.75 54.72,31.69 55.24,31.54 C 55.76,31.38 56.25,31.10 56.76,30.76 C 57.27,30.42 57.78,29.96 58.32,29.50 C 58.86,29.04 59.41,28.48 60.00,28.00 C 60.59,27.52 61.20,26.99 61.83,26.60 C 62.46,26.20 63.13,25.83 63.78,25.61 C 64.44,25.39 65.11,25.27 65.75,25.29 C 66.39,25.32 67.03,25.48 67.62,25.76 C 68.21,26.04 68.77,26.47 69.28,26.96 C 69.79,27.45 70.26,28.08 70.69,28.70 C 71.12,29.33 71.49,30.05 71.86,30.70 C 72.23,31.35 72.55,32.04 72.90,32.62 C 73.25,33.21 73.58,33.76 73.96,34.20 C 74.34,34.64 74.74,35.00 75.20,35.27 C 75.66,35.54 76.17,35.70 76.75,35.81 C 77.32,35.92 77.96,35.93 78.64,35.94 C 79.32,35.95 80.08,35.88 80.83,35.88 C 81.58,35.87 82.39,35.83 83.14,35.90 C 83.90,35.96 84.68,36.04 85.36,36.24 C 86.04,36.44 86.70,36.71 87.23,37.08 C 87.77,37.45 88.23,37.92 88.57,38.47 C 88.91,39.01 89.14,39.65 89.28,40.33 C 89.42,41.00 89.43,41.76 89.40,42.51 C 89.37,43.25 89.22,44.05 89.10,44.80 C 88.97,45.55 88.77,46.31 88.64,47.01 C 88.52,47.70 88.37,48.37 88.33,48.99 C 88.29,49.60 88.30,50.16 88.42,50.69 C 88.54,51.22 88.75,51.69 89.06,52.16 C 89.37,52.62 89.80,53.05 90.27,53.49 C 90.74,53.93 91.33,54.36 91.90,54.82 C 92.47,55.28 93.12,55.75 93.68,56.27 C 94.25,56.78 94.83,57.32 95.29,57.89 C 95.74,58.46 96.15,59.07 96.40,59.69 C 96.65,60.31 96.80,60.96 96.80,61.60 Z" fill="#3a0a16"/>
+        <path d="M 97.20,60.00 C 97.20,60.64 97.05,61.30 96.80,61.93 C 96.55,62.55 96.14,63.17 95.68,63.75 C 95.23,64.33 94.64,64.88 94.08,65.40 C 93.51,65.92 92.86,66.39 92.29,66.86 C 91.72,67.33 91.13,67.76 90.66,68.21 C 90.18,68.66 89.75,69.09 89.44,69.57 C 89.13,70.04 88.92,70.52 88.79,71.05 C 88.67,71.59 88.66,72.16 88.70,72.78 C 88.73,73.40 88.87,74.07 89.00,74.78 C 89.12,75.48 89.32,76.24 89.44,77.00 C 89.57,77.76 89.71,78.56 89.73,79.31 C 89.76,80.06 89.74,80.83 89.60,81.51 C 89.46,82.19 89.22,82.84 88.88,83.39 C 88.53,83.93 88.07,84.41 87.53,84.79 C 86.99,85.16 86.33,85.44 85.64,85.64 C 84.96,85.84 84.17,85.94 83.41,86.00 C 82.65,86.07 81.84,86.04 81.08,86.03 C 80.33,86.03 79.57,85.97 78.88,85.98 C 78.19,86.00 77.54,86.01 76.96,86.12 C 76.38,86.24 75.87,86.40 75.40,86.67 C 74.93,86.95 74.53,87.31 74.14,87.75 C 73.75,88.20 73.42,88.76 73.06,89.34 C 72.71,89.93 72.38,90.62 72.01,91.27 C 71.63,91.93 71.25,92.65 70.81,93.28 C 70.38,93.90 69.90,94.53 69.39,95.03 C 68.87,95.52 68.30,95.95 67.70,96.23 C 67.11,96.51 66.46,96.68 65.81,96.70 C 65.17,96.73 64.48,96.60 63.82,96.39 C 63.16,96.17 62.49,95.80 61.86,95.40 C 61.22,95.01 60.59,94.48 60.00,94.00 C 59.41,93.52 58.84,92.96 58.30,92.50 C 57.75,92.04 57.24,91.58 56.72,91.24 C 56.20,90.90 55.70,90.62 55.18,90.46 C 54.65,90.30 54.13,90.25 53.56,90.28 C 53.00,90.31 52.41,90.47 51.79,90.66 C 51.16,90.84 50.49,91.14 49.80,91.40 C 49.11,91.65 48.37,91.98 47.64,92.21 C 46.90,92.44 46.13,92.67 45.41,92.78 C 44.68,92.88 43.94,92.93 43.27,92.83 C 42.60,92.74 41.96,92.54 41.40,92.22 C 40.84,91.89 40.34,91.44 39.93,90.91 C 39.51,90.37 39.18,89.71 38.91,89.03 C 38.64,88.35 38.45,87.56 38.29,86.81 C 38.12,86.06 38.03,85.26 37.91,84.53 C 37.79,83.80 37.71,83.08 37.56,82.44 C 37.41,81.81 37.25,81.22 36.99,80.71 C 36.74,80.21 36.43,79.78 36.03,79.41 C 35.63,79.03 35.14,78.74 34.59,78.46 C 34.03,78.18 33.38,77.97 32.70,77.73 C 32.03,77.48 31.27,77.27 30.56,77.00 C 29.84,76.73 29.07,76.45 28.41,76.10 C 27.75,75.74 27.09,75.35 26.57,74.88 C 26.06,74.42 25.61,73.89 25.31,73.32 C 25.01,72.74 24.83,72.10 24.77,71.45 C 24.71,70.79 24.81,70.08 24.97,69.39 C 25.14,68.69 25.45,67.97 25.78,67.27 C 26.10,66.58 26.53,65.89 26.91,65.24 C 27.29,64.59 27.73,63.96 28.06,63.36 C 28.39,62.76 28.70,62.19 28.89,61.63 C 29.08,61.07 29.20,60.54 29.20,60.00 C 29.20,59.46 29.08,58.93 28.89,58.37 C 28.70,57.81 28.39,57.24 28.06,56.64 C 27.73,56.04 27.29,55.41 26.91,54.76 C 26.53,54.11 26.10,53.42 25.78,52.73 C 25.45,52.03 25.14,51.31 24.97,50.61 C 24.81,49.92 24.71,49.21 24.77,48.55 C 24.83,47.90 25.01,47.26 25.31,46.68 C 25.61,46.11 26.06,45.58 26.57,45.12 C 27.09,44.65 27.75,44.26 28.41,43.90 C 29.07,43.55 29.84,43.27 30.56,43.00 C 31.27,42.73 32.03,42.52 32.70,42.27 C 33.38,42.03 34.03,41.82 34.59,41.54 C 35.14,41.26 35.63,40.97 36.03,40.59 C 36.43,40.22 36.74,39.79 36.99,39.29 C 37.25,38.78 37.41,38.19 37.56,37.56 C 37.71,36.92 37.79,36.20 37.91,35.47 C 38.03,34.74 38.12,33.94 38.29,33.19 C 38.45,32.44 38.64,31.65 38.91,30.97 C 39.18,30.29 39.51,29.63 39.93,29.09 C 40.34,28.56 40.84,28.11 41.40,27.78 C 41.96,27.46 42.60,27.26 43.27,27.17 C 43.94,27.07 44.68,27.12 45.41,27.22 C 46.13,27.33 46.90,27.56 47.64,27.79 C 48.37,28.02 49.11,28.35 49.80,28.60 C 50.49,28.86 51.16,29.16 51.79,29.34 C 52.41,29.53 53.00,29.69 53.56,29.72 C 54.13,29.75 54.65,29.70 55.18,29.54 C 55.70,29.38 56.20,29.10 56.72,28.76 C 57.24,28.42 57.75,27.96 58.30,27.50 C 58.84,27.04 59.41,26.48 60.00,26.00 C 60.59,25.52 61.22,24.99 61.86,24.60 C 62.49,24.20 63.16,23.83 63.82,23.61 C 64.48,23.40 65.17,23.27 65.81,23.30 C 66.46,23.32 67.11,23.49 67.70,23.77 C 68.30,24.05 68.87,24.48 69.39,24.97 C 69.90,25.47 70.38,26.10 70.81,26.72 C 71.25,27.35 71.63,28.07 72.01,28.73 C 72.38,29.38 72.71,30.07 73.06,30.66 C 73.42,31.24 73.75,31.80 74.14,32.25 C 74.53,32.69 74.93,33.05 75.40,33.33 C 75.87,33.60 76.38,33.76 76.96,33.88 C 77.54,33.99 78.19,34.00 78.88,34.02 C 79.57,34.03 80.33,33.97 81.08,33.97 C 81.84,33.96 82.65,33.93 83.41,34.00 C 84.17,34.06 84.96,34.16 85.64,34.36 C 86.33,34.56 86.99,34.84 87.53,35.21 C 88.07,35.59 88.53,36.07 88.88,36.61 C 89.22,37.16 89.46,37.81 89.60,38.49 C 89.74,39.17 89.76,39.94 89.73,40.69 C 89.71,41.44 89.57,42.24 89.44,43.00 C 89.32,43.76 89.12,44.52 89.00,45.22 C 88.87,45.93 88.73,46.60 88.70,47.22 C 88.66,47.84 88.67,48.41 88.79,48.95 C 88.92,49.48 89.13,49.96 89.44,50.43 C 89.75,50.91 90.18,51.34 90.66,51.79 C 91.13,52.24 91.72,52.67 92.29,53.14 C 92.86,53.61 93.51,54.08 94.08,54.60 C 94.64,55.12 95.23,55.67 95.68,56.25 C 96.14,56.83 96.55,57.45 96.80,58.07 C 97.05,58.70 97.20,59.36 97.20,60.00 Z" fill="url(#waxOuter)"/>
+        <circle cx="60" cy="60" r="25" fill="url(#waxInner)"/>
+        <circle cx="60" cy="60" r="25" fill="none" stroke="#3a0a15" stroke-width="1.1" stroke-opacity=".4"/>
+        <circle cx="60" cy="60" r="22.5" fill="none" stroke="#e2748a" stroke-width="1" stroke-opacity=".22"/>
+        <ellipse cx="44" cy="36" rx="18" ry="12" fill="#fff" opacity=".16"/>
+        <ellipse cx="76" cy="84" rx="20" ry="13" fill="#000" opacity=".18"/>
+        <text x="60" y="70" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="28" fill="#3a0a15" opacity=".55">JS</text>
+        <text x="59" y="68.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="28" fill="#f4d9d2">JS</text>
+      </svg>
+    </div>
   </div>
   <div class="env-cta">
     <small>tap the seal</small>
@@ -293,10 +383,18 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   <b id="musicLabel">play music</b>
 </button>
 
-<header class="hero">
+<header class="hero" id="hero">
   <div class="grain" aria-hidden="true"></div>
   <div class="o1" data-par="0.28" aria-hidden="true"></div>
   <div class="o2" data-par="0.14" aria-hidden="true"></div>
+  <div class="floaties" aria-hidden="true">
+    <span style="--x:8%;--dur:13s;--del:0s">♡</span>
+    <span style="--x:22%;--dur:16s;--del:2.4s">✦</span>
+    <span style="--x:38%;--dur:11s;--del:5s">♡</span>
+    <span style="--x:58%;--dur:15s;--del:1.2s">✦</span>
+    <span style="--x:74%;--dur:12.5s;--del:3.6s">♡</span>
+    <span style="--x:88%;--dur:14s;--del:6.2s">✦</span>
+  </div>
 
   <div class="hero-inner">
     <div class="kicker" style="animation:rise .8s .1s both">together with our families</div>
@@ -329,7 +427,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   </div>
 </div>
 
-<section class="count">
+<section class="count" id="count">
   <div class="o" data-par="-0.06" aria-hidden="true"></div>
   <div class="row">
     <div>
@@ -345,13 +443,13 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   </div>
 </section>
 
-<div class="photoband">
+<div class="photoband" id="photo">
   <div class="inner" data-par="-0.09">
     <img src="images/couple-2.jpg" alt="Jishnu and Sruthi">
   </div>
 </div>
 
-<section class="section cal-section">
+<section class="section cal-section" id="cal">
   <div class="wrap">
     <div>
       <div class="kicker">save these dates</div>
@@ -377,7 +475,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   </div>
 </section>
 
-<section class="section venue-section">
+<section class="section venue-section" id="venue">
   <div class="kicker">two moments</div>
   <h2>When &amp; where</h2>
   <div class="venues">
@@ -413,7 +511,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   </div>
 </section>
 
-<footer>
+<footer id="footer">
   <div class="glyphs">♡ ✦ ♡</div>
   <p>Jishnu &amp; Sruthi</p>
   <span>Dress up, show up, celebrate with us.</span>
@@ -425,6 +523,9 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 </div>
 
 <script>
+var REDUCE_MOTION = matchMedia("(prefers-reduced-motion: reduce)").matches;
+var DESKTOP_FINE = matchMedia("(min-width:900px) and (pointer:fine)").matches;
+
 /* ---------------- countdown ---------------- */
 var TARGET = new Date("2026-11-06T13:20:00+05:30").getTime();
 var pad = function(n){ return (n<10?"0":"")+n; };
@@ -528,23 +629,128 @@ var bar = document.getElementById("bar"), pars = [].slice.call(document.querySel
 function onScroll(){
   var max = document.documentElement.scrollHeight - innerHeight;
   bar.style.width = Math.min(100, (scrollY / Math.max(1,max)) * 100) + "%";
-  pars.forEach(function(n){ n.style.transform = "translate3d(0," + (scrollY*parseFloat(n.dataset.par)).toFixed(1) + "px,0)"; });
+  if (!REDUCE_MOTION){
+    pars.forEach(function(n){ n.style.transform = "translate3d(0," + (scrollY*parseFloat(n.dataset.par)).toFixed(1) + "px,0)"; });
+  }
+  var totop = document.getElementById("totop");
+  if (totop) totop.classList.toggle("show", scrollY > innerHeight * .6);
 }
 addEventListener("scroll", function(){ requestAnimationFrame(onScroll); }, {passive:true});
 onScroll();
 
-/* ---------------- cursor glow + photo tilt (desktop) ---------------- */
+/* ---------------- cursor glow (smoothed/lerped) + photo tilt (desktop) ---------------- */
 var glow = document.getElementById("glow"), tilt = document.getElementById("tilt");
-if (matchMedia("(min-width:900px) and (pointer:fine)").matches){
+if (DESKTOP_FINE && !REDUCE_MOTION){
+  var glowTarget = {x:innerWidth*.5-220,y:innerHeight*.4-220}, glowPos = {x:glowTarget.x,y:glowTarget.y};
   addEventListener("mousemove", function(e){
-    glow.style.transform = "translate3d("+(e.clientX-220)+"px,"+(e.clientY-220)+"px,0)";
+    glowTarget.x = e.clientX-220; glowTarget.y = e.clientY-220;
     if (tilt){
       var r = tilt.getBoundingClientRect();
       var cx = (e.clientX-r.left)/r.width-.5, cy = (e.clientY-r.top)/r.height-.5;
       tilt.style.transform = "perspective(1000px) rotateY("+(cx*8).toFixed(2)+"deg) rotateX("+(-cy*8).toFixed(2)+"deg)";
     }
   });
+  (function glowLoop(){
+    glowPos.x += (glowTarget.x-glowPos.x)*.11;
+    glowPos.y += (glowTarget.y-glowPos.y)*.11;
+    glow.style.transform = "translate3d("+glowPos.x.toFixed(1)+"px,"+glowPos.y.toFixed(1)+"px,0)";
+    requestAnimationFrame(glowLoop);
+  })();
 } else if (glow) glow.style.display = "none";
+
+/* ---------------- magnetic buttons + 3D card tilt (desktop) ---------------- */
+if (DESKTOP_FINE && !REDUCE_MOTION){
+  [].forEach.call(document.querySelectorAll(".btn"), function(b){
+    b.addEventListener("mousemove", function(e){
+      var r = b.getBoundingClientRect();
+      var mx = e.clientX-r.left-r.width/2, my = e.clientY-r.top-r.height/2;
+      b.style.transform = "translate("+(mx*.16).toFixed(1)+"px,"+(my*.32).toFixed(1)+"px)";
+    });
+    b.addEventListener("mouseleave", function(){ b.style.transform = ""; });
+  });
+  [].forEach.call(document.querySelectorAll(".card"), function(card){
+    card.addEventListener("mousemove", function(e){
+      var r = card.getBoundingClientRect();
+      var cx = (e.clientX-r.left)/r.width-.5, cy = (e.clientY-r.top)/r.height-.5;
+      card.style.transform = "perspective(900px) rotateY("+(cx*3.5).toFixed(2)+"deg) rotateX("+(-cy*3.5).toFixed(2)+"deg) translateY(-3px)";
+    });
+    card.addEventListener("mouseleave", function(){ card.style.transform = ""; });
+  });
+}
+
+/* ---------------- cinematic photo reveal ---------------- */
+(function(){
+  var pbImg = document.querySelector(".photoband img");
+  if (!pbImg) return;
+  if (!("IntersectionObserver" in window) || REDUCE_MOTION){ pbImg.classList.add("reveal-in"); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if (!en.isIntersecting) return;
+      en.target.classList.add("reveal-in");
+      io.unobserve(en.target);
+    });
+  }, {threshold:.2});
+  io.observe(pbImg);
+})();
+
+/* ---------------- section dot nav ---------------- */
+(function(){
+  var ids = ["hero","count","photo","cal","venue","footer"];
+  var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var dots = [].slice.call(document.querySelectorAll("[data-dot]"));
+  if (!dots.length || !sections.length) return;
+  dots.forEach(function(b){
+    b.addEventListener("click", function(){
+      var t = document.getElementById(b.dataset.dot);
+      if (!t) return;
+      scrollTo({ top: t.getBoundingClientRect().top + scrollY - (innerWidth>=900?0:10), behavior: REDUCE_MOTION?"auto":"smooth" });
+    });
+  });
+  if ("IntersectionObserver" in window){
+    var navIO = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if (!en.isIntersecting) return;
+        dots.forEach(function(b){ b.classList.toggle("active", b.dataset.dot === en.target.id); });
+      });
+    }, {threshold:.5});
+    sections.forEach(function(s){ navIO.observe(s); });
+  }
+})();
+
+/* ---------------- back to top ---------------- */
+(function(){
+  var totop = document.getElementById("totop");
+  if (!totop) return;
+  totop.addEventListener("click", function(){
+    scrollTo({ top: 0, behavior: REDUCE_MOTION?"auto":"smooth" });
+  });
+})();
+
+/* ---------------- split-text heading reveal ---------------- */
+(function(){
+  if (REDUCE_MOTION || !("IntersectionObserver" in window)) return;
+  var heads = [].slice.call(document.querySelectorAll(".section h2, .count h2"));
+  heads.forEach(function(h){
+    var wordIndex = 0;
+    var html = h.innerHTML.split(/(<br>)/).map(function(part){
+      if (part === "<br>") return "<br>";
+      return part.split(" ").map(function(w){
+        if (!w) return "";
+        wordIndex++;
+        return '<span class="word" style="transition-delay:' + (wordIndex*0.055).toFixed(2) + 's">' + w + '</span>';
+      }).join(" ");
+    }).join("");
+    h.innerHTML = html;
+  });
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if (!en.isIntersecting) return;
+      [].forEach.call(en.target.querySelectorAll(".word"), function(w){ w.classList.add("in"); });
+      io.unobserve(en.target);
+    });
+  }, {threshold:.4});
+  heads.forEach(function(h){ io.observe(h); });
+})();
 
 /* ---------------- reveals ---------------- */
 (function(){
