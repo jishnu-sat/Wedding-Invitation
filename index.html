@@ -56,7 +56,7 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
   filter:drop-shadow(0 5px 6px rgba(58,9,18,.22))}
 .env-seal{position:absolute;left:50%;top:83px;width:78px;height:78px;transform:translate(-50%,-50%) rotate(-4deg);z-index:4;
   filter:drop-shadow(0 9px 12px rgba(30,0,6,.5)) drop-shadow(0 2px 3px rgba(30,0,6,.35));
-  animation:pulseRing 2.2s ease-out infinite;transition:transform .6s ease,opacity .5s ease}
+  transition:transform .6s ease,opacity .5s ease}
 .env-seal svg{display:block;width:100%;height:100%;overflow:visible}
 .env-cta{position:absolute;bottom:54px;left:0;right:0;text-align:center;animation:drift 3s ease-in-out infinite}
 .env-cta small{display:block;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,235,220,.55)}
@@ -83,7 +83,7 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .hero .o1,.hero .o2{position:absolute;border-radius:50%}
 .hero .o1{top:110px;width:310px;height:310px;border:1px solid rgba(176,138,74,.3)}
 .hero .o2{top:170px;width:210px;height:210px;border:1px solid rgba(184,63,89,.14)}
-.hero-inner{position:relative;padding:76px 26px 40px;max-width:760px}
+.hero-inner{position:relative;padding:76px 26px 8px;max-width:760px}
 .names{margin:24px 0 0;font-size:clamp(56px,17vw,104px);line-height:.86;letter-spacing:-.015em;cursor:pointer}
 .names span{display:block;animation:rise .9s both}
 .names span:nth-child(1){animation-delay:.2s}
@@ -96,15 +96,15 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .scrollcue{position:relative;font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:#b3898f;padding-bottom:24px;animation:drift 2.6s ease-in-out infinite}
 
 /* hero illustration — visible on mobile and desktop, no card/frame since PNG has transparent bg */
-.illustration{position:relative;width:100%;max-width:280px;margin:6px auto 0;padding:0 24px}
-.illustration::before{content:"";position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+.illustration{position:relative;width:100%;max-width:280px;margin:0 auto;padding:0 24px}
+.illustration::before{content:"";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
   width:220px;height:220px;border-radius:50%;pointer-events:none;z-index:0;
   background:radial-gradient(circle,rgba(184,63,89,.16),rgba(184,63,89,.04) 58%,transparent 74%)}
 .illustration img{width:100%;height:auto;display:block;position:relative;z-index:1;filter:drop-shadow(0 22px 28px rgba(58,9,18,.25));transition:transform .18s ease}
 
 /* marquee */
 .marquee{overflow:hidden;padding:13px 0;background:var(--ink)}
-.marquee div{display:flex;width:max-content;animation:marq 22s linear infinite;font-family:var(--serif);font-size:22px;color:#f2c9cd;white-space:nowrap}
+.marquee div{display:flex;width:max-content;animation:marq 12s linear infinite;font-family:var(--serif);font-size:22px;color:#f2c9cd;white-space:nowrap}
 .marquee span{padding-right:26px}
 .marquee s{padding-right:26px;text-decoration:none;color:#c9a06a}
 
@@ -119,19 +119,11 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .cbox b{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(28px,8vw,42px);line-height:1;color:#f3c9cd}
 .cbox small{display:block;margin-top:6px;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(251,234,234,.6)}
 
-/* photo */
-.photoband{position:relative;height:300px;overflow:hidden;border-bottom:1px solid rgba(107,18,38,.1)}
-.photoband::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(to top,rgba(58,9,18,.5),rgba(107,18,38,.1) 42%,rgba(184,63,89,.16)),
-             radial-gradient(120% 90% at 50% 45%,transparent 45%,rgba(44,7,16,.42))}
-.photoband .inner{position:absolute;inset:-70px 0;background:repeating-linear-gradient(135deg,#f2e3e0 0 9px,#f8efec 9px 18px)}
-.photoband img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 5%;display:block;
-  filter:saturate(.72) contrast(1.04) sepia(.14) brightness(1.02)}
-.ph{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--soft)}
-
 /* calendar */
 .section{padding:52px 26px;text-align:center}
 .section h2{font-size:clamp(34px,9vw,52px);margin:12px 0 4px}
+.cal-heading{margin:0 0 18px}
+.cal-meta{margin-top:28px}
 .section p.lede{margin:0 auto;max-width:280px;font-size:12.5px;line-height:1.7;color:var(--muted)}
 .cal{margin-top:26px;padding:20px 12px 16px;border-top:1px solid rgba(107,18,38,.14);border-bottom:1px solid rgba(107,18,38,.1)}
 .cal .wd,.cal .days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
@@ -168,6 +160,12 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .btn:hover{background:var(--accent)}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(107,18,38,.25)}
 .btn.ghost:hover{background:rgba(107,18,38,.06)}
+.cta-row{display:flex;align-items:center;gap:12px;margin-top:18px}
+.cta-row .btn{margin-top:0}
+.map-thumb{flex:none;width:56px;height:56px;border-radius:14px;overflow:hidden;display:block;
+  border:1px solid rgba(107,18,38,.15);box-shadow:0 6px 14px rgba(107,18,38,.14);transition:transform .2s ease}
+.map-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.map-thumb:hover{transform:scale(1.06)}
 .then{display:grid;place-items:center;margin:16px 0}
 .then div{width:56px;height:56px;border-radius:50%;background:#fff;border:1px solid rgba(107,18,38,.18);display:grid;place-items:center;
   font-family:var(--serif);font-size:17px;color:var(--accent);animation:drift 3.4s ease-in-out infinite}
@@ -198,9 +196,6 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   100%{transform:translateY(-100vh) translateX(-8px) rotate(-8deg);opacity:0}
 }
 
-.photoband img{transition:transform 1.7s cubic-bezier(.16,.8,.24,1)}
-.photoband img{transform:scale(1.16)}
-.photoband img.reveal-in{transform:scale(1)}
 
 .word{display:inline-block;opacity:0;transform:translateY(18px) rotate(1.2deg);
   transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
@@ -223,7 +218,6 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 
 @media (prefers-reduced-motion:reduce){
   .word{opacity:1;transform:none}
-  .photoband img{transform:scale(1)}
 }
 
 .reveal{opacity:0}
@@ -235,7 +229,6 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 @keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
 @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@keyframes pulseRing{0%{box-shadow:inset 0 3px 5px rgba(255,255,255,.2),0 0 0 0 rgba(216,167,174,.5)}100%{box-shadow:inset 0 3px 5px rgba(255,255,255,.2),0 0 0 14px rgba(216,167,174,0)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1}}
 
 /* ---------- desktop ---------- */
@@ -277,7 +270,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
     background:radial-gradient(circle,rgba(216,167,174,.24),transparent 62%);will-change:transform}
 
   .marquee{padding:16px 0}
-  .marquee div{font-size:30px;animation-duration:30s}
+  .marquee div{font-size:30px;animation-duration:16s}
   .marquee span,.marquee s{padding-right:38px}
 
   .count{padding:64px 76px;text-align:left}
@@ -287,11 +280,11 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   .cbox{min-width:104px;text-align:center;padding:20px 10px;border-radius:16px}
   .cbox small{font-size:8.5px;letter-spacing:.24em}
 
-  .photoband{height:480px}
-  .photoband .inner{inset:-110px 0}
-
   .section{padding:70px 76px;text-align:left}
-  .section.cal-section .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+  .section.cal-section .wrap{display:grid;grid-template-columns:.85fr 1.15fr;grid-template-areas:"meta heading" "meta cal";gap:0 56px;align-items:start}
+  .cal-heading{grid-area:heading;margin:0 0 4px}
+  .cal{grid-area:cal}
+  .cal-meta{grid-area:meta;margin-top:0}
   .section p.lede{margin:0;max-width:300px;font-size:13.5px;line-height:1.75}
   .cal{margin-top:0;padding:26px 30px 30px}
   .cal .wd,.cal .days{gap:4px}
@@ -325,7 +318,6 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 <nav class="dotnav" aria-label="Section navigation">
   <button data-dot="hero" aria-label="Home"></button>
   <button data-dot="count" aria-label="Countdown"></button>
-  <button data-dot="photo" aria-label="Photo"></button>
   <button data-dot="cal" aria-label="Dates"></button>
   <button data-dot="venue" aria-label="Venues"></button>
   <button data-dot="footer" aria-label="End"></button>
@@ -340,7 +332,6 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
     <div class="env-back"></div>
     <div class="env-card">
       <div>
-        <div class="d">06 · 11 · 26</div>
         <div class="n">Jishnu <em>&amp;</em> Sruthi</div>
       </div>
     </div>
@@ -440,33 +431,27 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   </div>
 </section>
 
-<div class="photoband" id="photo">
-  <div class="inner" data-par="-0.09">
-    <img src="images/couple-2.jpg" alt="Jishnu and Sruthi">
-  </div>
-</div>
-
 <section class="section cal-section" id="cal">
   <div class="wrap">
-    <div>
-      <div class="kicker">save these dates</div>
-      <h2>November 2026</h2>
-      <p class="lede">Two days, two celebrations. Tap a highlighted date to jump to it.</p>
-      <div class="chips">
-        <button class="chip" data-go="1"><i style="background:#8e2039"></i><span><strong>06 Nov · Muhurtham</strong><small>1:20 PM · Chelannur, Kozhikode</small></span></button>
-        <button class="chip" data-go="2"><i style="background:var(--blush)"></i><span><strong>07 Nov · Reception</strong><small>11:30 AM · Payyanur</small></span></button>
-      </div>
-    </div>
+    <h2 class="cal-heading">November 2026</h2>
     <div class="cal reveal">
       <div class="wd" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
       <div class="days">
         <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-        <b class="d6" data-go="1" title="Muhurtham">6</b>
+        <b class="d6" data-go="1" title="Marriage">6</b>
         <b class="d7" data-go="2" title="Reception">7</b>
         <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
         <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
         <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
         <span>29</span><span>30</span>
+      </div>
+    </div>
+    <div class="cal-meta">
+      <div class="kicker">save these dates</div>
+      <p class="lede">Two days, two celebrations. Tap a highlighted date to jump to it.</p>
+      <div class="chips">
+        <button class="chip" data-go="1"><i style="background:#8e2039"></i><span><strong>06 Nov · Marriage</strong><small>1:20 PM · Chelannur, Kozhikode</small></span></button>
+        <button class="chip" data-go="2"><i style="background:var(--blush)"></i><span><strong>07 Nov · Reception</strong><small>11:30 AM · Payyanur, Kannur</small></span></button>
       </div>
     </div>
   </div>
@@ -487,7 +472,12 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
         <strong>‘Shivoham’ House</strong>
         <span>Chelannur, Kozhikode</span>
       </div>
-      <a class="btn" href="https://maps.app.goo.gl/HYz6mXHwai9Pw2UUA?g_st=ac" target="_blank" rel="noopener">Get directions →</a>
+      <div class="cta-row">
+        <a class="btn" href="https://maps.app.goo.gl/HYz6mXHwai9Pw2UUA?g_st=ac" target="_blank" rel="noopener">Get directions →</a>
+        <a class="map-thumb" href="https://maps.app.goo.gl/HYz6mXHwai9Pw2UUA?g_st=ac" target="_blank" rel="noopener">
+          <img src="images/map-ceremony.jpg" alt="Map to Shivoham House, Chelannur">
+        </a>
+      </div>
     </article>
 
     <div class="then" aria-hidden="true"><div>then</div></div>
@@ -503,7 +493,12 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
         <strong>Sreeprabha Auditorium</strong>
         <span>Payyanur, Kannur</span>
       </div>
-      <a class="btn" href="https://maps.app.goo.gl/ZwyRaYiQ4gM2jgMC9" target="_blank" rel="noopener">Open in Maps →</a>
+      <div class="cta-row">
+        <a class="btn" href="https://maps.app.goo.gl/ZwyRaYiQ4gM2jgMC9" target="_blank" rel="noopener">Open in Maps →</a>
+        <a class="map-thumb" href="https://maps.app.goo.gl/ZwyRaYiQ4gM2jgMC9" target="_blank" rel="noopener">
+          <img src="images/map-reception.jpg" alt="Map to Sreeprabha Auditorium, Payyanur">
+        </a>
+      </div>
     </article>
   </div>
 </section>
@@ -713,24 +708,9 @@ if (DESKTOP_FINE && !REDUCE_MOTION){
   });
 }
 
-/* ---------------- cinematic photo reveal ---------------- */
-(function(){
-  var pbImg = document.querySelector(".photoband img");
-  if (!pbImg) return;
-  if (!("IntersectionObserver" in window) || REDUCE_MOTION){ pbImg.classList.add("reveal-in"); return; }
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(en){
-      if (!en.isIntersecting) return;
-      en.target.classList.add("reveal-in");
-      io.unobserve(en.target);
-    });
-  }, {threshold:.2});
-  io.observe(pbImg);
-})();
-
 /* ---------------- section dot nav ---------------- */
 (function(){
-  var ids = ["hero","count","photo","cal","venue","footer"];
+  var ids = ["hero","count","cal","venue","footer"];
   var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
   var dots = [].slice.call(document.querySelectorAll("[data-dot]"));
   if (!dots.length || !sections.length) return;
@@ -832,7 +812,7 @@ if (DESKTOP_FINE && !REDUCE_MOTION){
 });
 
 /* ---------------- music (generated, no audio file needed) ---------------- */
-var actx, playing = false, mt = null, mstep = 0;
+var actx, playing = false, mt = null, mstep = 0, userPaused = false;
 var btn = document.getElementById("music"), label = document.getElementById("musicLabel");
 function note(f,dur,vol,type,off){
   var t = actx.currentTime + (off||0);
@@ -861,18 +841,30 @@ function loop(){
   mstep++;
   mt = setTimeout(loop, 470);
 }
-btn.addEventListener("click", function(e){
-  e.stopPropagation();
-  if (playing){
-    playing = false; clearTimeout(mt);
-    btn.classList.remove("on"); label.textContent = "play music"; btn.setAttribute("aria-label","Play music");
-  } else {
-    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
-    if (actx.state === "suspended") actx.resume();
+function startMusic(){
+  if (playing) return;
+  actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+  var resumed = actx.state === "suspended" ? actx.resume() : Promise.resolve();
+  resumed.then(function(){
     playing = true; mstep = 0; loop();
     btn.classList.add("on"); label.textContent = "music on"; btn.setAttribute("aria-label","Pause music");
-  }
+  }).catch(function(){ /* browser blocked it silently; user can still tap the button */ });
+}
+function stopMusic(){
+  playing = false; clearTimeout(mt);
+  btn.classList.remove("on"); label.textContent = "play music"; btn.setAttribute("aria-label","Play music");
+}
+btn.addEventListener("click", function(e){
+  e.stopPropagation();
+  if (playing){ stopMusic(); userPaused = true; }
+  else { userPaused = false; startMusic(); }
 });
+
+/* auto-start music on the first scroll, unless the user has explicitly paused it */
+addEventListener("scroll", function autoStartOnScroll(){
+  if (!playing && !userPaused) startMusic();
+  removeEventListener("scroll", autoStartOnScroll);
+}, {passive:true, once:true});
 </script>
 </body>
 </html>
