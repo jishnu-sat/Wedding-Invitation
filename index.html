@@ -816,7 +816,7 @@ var btn = document.getElementById("music"), label = document.getElementById("mus
 
 function startMusic(){
   if (playing) return;
-  bgm.volume = 0.55;
+  bgm.volume = 0.35;
   bgm.addEventListener("ended", function(){
   playing = false;
   btn.classList.remove("on"); label.textContent = "play music"; btn.setAttribute("aria-label","Play music");
