@@ -80,11 +80,12 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .hero{position:relative;min-height:100svh;display:grid;align-content:center;justify-items:center;text-align:center;overflow:hidden;
   background:linear-gradient(180deg,var(--paper),var(--paper-2))}
 .hero .grain{position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(107,18,38,.045) 0 1px,transparent 1px 11px)}
-.hero .o1,.hero .o2{position:absolute;border-radius:50%}
-.hero .o1{top:110px;width:310px;height:310px;border:1px solid rgba(176,138,74,.3)}
+.hero .o2{position:absolute;border-radius:50%}
 .hero .o2{top:170px;width:210px;height:210px;border:1px solid rgba(184,63,89,.14)}
 .hero-inner{position:relative;padding:76px 26px 0;max-width:760px}
-.names{margin:24px 0 0;font-size:clamp(56px,17vw,104px);line-height:.86;letter-spacing:-.015em;cursor:pointer}
+.names{position:relative;margin:24px 0 0;font-size:clamp(56px,17vw,104px);line-height:.86;letter-spacing:-.015em;cursor:pointer}
+.names::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:88%;aspect-ratio:1/1;border:1px solid rgba(176,138,74,.3);border-radius:50%;z-index:-1;pointer-events:none}
 .names span{display:block;animation:rise .9s both}
 .names span:nth-child(1){animation-delay:.2s}
 .names em{display:block;font-style:italic;color:var(--gold);font-size:.55em;margin:6px 0;animation:rise .9s .35s both}
@@ -254,10 +255,10 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   .music .bars{display:flex;align-items:center;gap:2px}
 
   .hero{grid-template-columns:1.05fr .95fr;align-items:center;justify-items:stretch;text-align:left;min-height:100svh}
-  .hero .o1{display:none}
   .hero .o2{display:none}
   .hero-inner{padding:0 40px 0 76px;max-width:none}
   .names{margin:26px 0 0}
+  .names::before{display:none}
   .names em{font-size:.56em;margin:8px 0}
   .hero .lede-row{display:flex;align-items:center;gap:16px;margin-top:32px}
   .hero .lede-row .line{width:58px;height:1px;background:#c9a06a;flex:none}
@@ -359,7 +360,6 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 
 <header class="hero" id="hero">
   <div class="grain" aria-hidden="true"></div>
-  <div class="o1" data-par="0.28" aria-hidden="true"></div>
   <div class="o2" data-par="0.14" aria-hidden="true"></div>
   <div class="floaties" aria-hidden="true">
     <span style="--x:8%;--dur:13s;--del:0s">♡</span>
@@ -814,7 +814,7 @@ if (DESKTOP_FINE && !REDUCE_MOTION){
 var bgm = document.getElementById("bgm");
 var playing = false, userPaused = false;
 var btn = document.getElementById("music"), label = document.getElementById("musicLabel");
-bgm.volume = 0.2;
+bgm.volume = 0.1;
 bgm.addEventListener("ended", function(){
   playing = false;
   btn.classList.remove("on"); label.textContent = "play music"; btn.setAttribute("aria-label","Play music");
