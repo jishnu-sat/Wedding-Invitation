@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jishnu &amp; Sruthi — 6 November</title>
+<title>Jishnu &amp; Sruthi's Forever</title>
 <meta name="description" content="Jishnu &amp; Sruthi are getting married — 6 &amp; 7 November 2026, Kozhikode &amp; Payyanur, Kerala.">
 <meta property="og:title" content="Jishnu &amp; Sruthi — 6 &amp; 7 November 2026">
 <meta property="og:description" content="Come eat, dance, cry a little.">
@@ -155,8 +155,8 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .timeline li{display:flex;align-items:center;gap:10px;font-size:12.5px;padding-bottom:9px;border-bottom:1px dashed rgba(107,18,38,.14)}
 .timeline li:last-child{border-bottom:0;padding-bottom:0}
 .timeline .dot{width:6px;height:6px;border-radius:50%;flex:none}
-.timeline .t{flex:none;width:66px;font-family:var(--mono);font-size:10px;letter-spacing:.02em;color:var(--accent)}
 .timeline .l{color:var(--ink);font-weight:500}
+.timeline .tt{margin-left:5px;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.02em;color:var(--accent)}
 .card .info{margin-top:20px;padding-top:16px;border-top:1px solid rgba(107,18,38,.12);
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .card .info .info-text{min-width:0}
@@ -355,6 +355,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   <span class="bars"><i></i><i></i><i></i></span>
   <b id="musicLabel">play music</b>
 </button>
+<audio id="bgm" src="audio/song.mp3" loop preload="auto"></audio>
 
 <header class="hero" id="hero">
   <div class="grain" aria-hidden="true"></div>
@@ -451,9 +452,9 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
       <h3>Marriage Ceremony</h3>
       <div class="pill">Muhurtham · 1:20 – 2:00 PM</div>
       <ul class="timeline">
-        <li><i class="dot" style="background:#8e2039"></i><span class="t">12:45 PM</span><span class="l">Guests arrive</span></li>
-        <li><i class="dot" style="background:#8e2039"></i><span class="t">1:20 PM</span><span class="l">Muhurtham</span></li>
-        <li><i class="dot" style="background:#8e2039"></i><span class="t">1:30 PM</span><span class="l">Lunch</span></li>
+        <li><i class="dot" style="background:#8e2039"></i><span class="l">Guests arrive</span></li>
+        <li><i class="dot" style="background:#8e2039"></i><span class="l">Muhurtham<span class="tt">· 1:20 PM</span></span></li>
+        <li><i class="dot" style="background:#8e2039"></i><span class="l">Lunch to follow</span></li>
       </ul>
       <div class="info">
         <div class="info-text">
@@ -479,15 +480,15 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
       <h3>Wedding Reception</h3>
       <div class="pill">11:30 AM – 2:00 PM</div>
       <ul class="timeline">
-        <li><i class="dot" style="background:var(--blush)"></i><span class="t">11:00 AM</span><span class="l">Guests arrive</span></li>
-        <li><i class="dot" style="background:var(--blush)"></i><span class="t">11:30 AM</span><span class="l">Reception begins</span></li>
-        <li><i class="dot" style="background:var(--blush)"></i><span class="t">12:00 PM</span><span class="l">Lunch</span></li>
+        <li><i class="dot" style="background:var(--blush)"></i><span class="l">Guests arrive</span></li>
+        <li><i class="dot" style="background:var(--blush)"></i><span class="l">Reception begins<span class="tt">· 11:30 AM</span></span></li>
+        <li><i class="dot" style="background:var(--blush)"></i><span class="l">Lunch to follow</span></li>
       </ul>
       <div class="info">
         <div class="info-text">
           <small class="lb">venue</small>
           <div class="addr-row">
-            <span class="addr-icon" aria-hidden="true">🏛️</span>
+            <span class="addr-icon" aria-hidden="true">💒</span>
             <div class="addr-lines">
               <strong>Sreeprabha Auditorium</strong>
               <span>Payyanur, Kannur</span>
@@ -808,47 +809,22 @@ if (DESKTOP_FINE && !REDUCE_MOTION){
   });
 });
 
-/* ---------------- music (generated, no audio file needed) ---------------- */
-var actx, playing = false, mt = null, mstep = 0, userPaused = false;
+/* ---------------- background music (real audio file) ---------------- */
+var bgm = document.getElementById("bgm");
+var playing = false, userPaused = false;
 var btn = document.getElementById("music"), label = document.getElementById("musicLabel");
-function note(f,dur,vol,type,off){
-  var t = actx.currentTime + (off||0);
-  var o = actx.createOscillator(), g = actx.createGain(), fl = actx.createBiquadFilter();
-  o.type = type || "sine"; o.frequency.setValueAtTime(f,t);
-  fl.type = "lowpass"; fl.frequency.setValueAtTime(2200,t);
-  g.gain.setValueAtTime(1e-4,t);
-  g.gain.exponentialRampToValueAtTime(vol,t+.04);
-  g.gain.exponentialRampToValueAtTime(1e-4,t+dur);
-  o.connect(fl); fl.connect(g); g.connect(actx.destination);
-  o.start(t); o.stop(t+dur+.05);
-}
-function loop(){
-  if (!playing) return;
-  var prog = [[261.63,329.63,392.00],[196.00,246.94,392.00],[220.00,261.63,329.63],[174.61,220.00,261.63]];
-  var patt = [0,2,1,2,0,1,2,1];
-  var i = mstep % 32, chord = prog[Math.floor(i/8)%4];
-  if (i%8===0){
-    chord.forEach(function(fr,k){ note(fr/2,3.4,.015,"triangle",k*.02); });
-    note(chord[0]/4,3.6,.019,"sine",.01);
-  }
-  var bell = chord[patt[i%8]]*2;
-  note(bell,1.9,.027,"sine");
-  note(bell*2,1.0,.005,"sine",.06);
-  if (i%4===2) note(chord[1]*3,.9,.005,"triangle",.12);
-  mstep++;
-  mt = setTimeout(loop, 470);
-}
+
 function startMusic(){
   if (playing) return;
-  actx = actx || new (window.AudioContext || window.webkitAudioContext)();
-  var resumed = actx.state === "suspended" ? actx.resume() : Promise.resolve();
-  resumed.then(function(){
-    playing = true; mstep = 0; loop();
+  bgm.volume = 0.55;
+  bgm.play().then(function(){
+    playing = true;
     btn.classList.add("on"); label.textContent = "music on"; btn.setAttribute("aria-label","Pause music");
   }).catch(function(){ /* browser blocked it silently; user can still tap the button */ });
 }
 function stopMusic(){
-  playing = false; clearTimeout(mt);
+  bgm.pause();
+  playing = false;
   btn.classList.remove("on"); label.textContent = "play music"; btn.setAttribute("aria-label","Play music");
 }
 btn.addEventListener("click", function(e){
