@@ -355,7 +355,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   <span class="bars"><i></i><i></i><i></i></span>
   <b id="musicLabel">play music</b>
 </button>
-<audio id="bgm" src="audio/song.mp3" loop preload="auto"></audio>
+<audio id="bgm" src="audio/song.mp3" preload="auto"></audio>
 
 <header class="hero" id="hero">
   <div class="grain" aria-hidden="true"></div>
@@ -817,6 +817,10 @@ var btn = document.getElementById("music"), label = document.getElementById("mus
 function startMusic(){
   if (playing) return;
   bgm.volume = 0.55;
+  bgm.addEventListener("ended", function(){
+  playing = false;
+  btn.classList.remove("on"); label.textContent = "play music"; btn.setAttribute("aria-label","Play music");
+  });
   bgm.play().then(function(){
     playing = true;
     btn.classList.add("on"); label.textContent = "music on"; btn.setAttribute("aria-label","Pause music");
