@@ -95,7 +95,7 @@ canvas#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
 .badge s{text-decoration:none;color:var(--gold)}
 .scrollcue{position:relative;font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:#b3898f;padding-bottom:24px;animation:drift 2.6s ease-in-out infinite}
 
-/* hero illustration — visible on mobile and desktop, no card/frame since PNG has transparent bg */
+/* hero illustration */
 .illustration{position:relative;width:100%;max-width:330px;margin:0 auto;padding:0 20px}
 .illustration::before{content:"";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
   width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:0;
@@ -185,7 +185,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 .stickybar .btn{flex:1;margin:0;justify-content:center;padding:13px 10px;border-radius:14px}
 .hero-actions{display:none}
 
-/* ---------- wow layer: dot nav, magnetic btns, tilt cards, photo reveal, floaties, split text, to-top ---------- */
+/* floaties, word, dotnav, totop */
 .btn{transition:transform .22s cubic-bezier(.2,.8,.2,1),background .2s ease}
 .card{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease;transform-style:preserve-3d;will-change:transform}
 .card:hover{box-shadow:0 22px 46px rgba(107,18,38,.14)}
@@ -200,7 +200,6 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
   92%{opacity:.22}
   100%{transform:translateY(-100vh) translateX(-8px) rotate(-8deg);opacity:0}
 }
-
 
 .word{display:inline-block;opacity:0;transform:translateY(18px) rotate(1.2deg);
   transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
@@ -380,7 +379,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
     </div>
     <div class="badge" style="animation:rise .9s .8s both"><s>✦</s>FRI 06 &amp; SAT 07 NOV 2026<s>✦</s></div>
     <div class="hero-actions">
-      <button class="btn" data-ics>＋ Save the dates</button>
+      <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Jishnu%20%26%20Sruthi%27s%20Wedding%20Celebrations%20%F0%9F%92%8D%F0%9F%8E%89&dates=20261106T053000Z/20261106T083000Z&recur=RRULE:FREQ=DAILY;COUNT=2&details=We%20can%27t%20wait%20to%20celebrate%20with%20you%20across%20two%20amazing%20days%21%0A%0ADay%201%3A%20Marriage%20Ceremony%0A%E2%80%A2%20Date%3A%20Friday%2C%20Nov%206%0A%E2%80%A2%20Time%3A%201%3A20%20PM%20Muhurtham%0A%E2%80%A2%20Venue%3A%20%27Shivoham%27%20House%2C%20Chelannur%0A%E2%80%A2%20Maps%3A%20https%3A//maps.app.goo.gl/HYz6mXHwai9Pw2UUA%3Fg_st%3Dac%0A%0ADay%202%3A%20Wedding%20Reception%0A%E2%80%A2%20Date%3A%20Saturday%2C%20Nov%207%0A%E2%80%A2%20Time%3A%2011%3A30%20AM%20onwards%0A%E2%80%A2%20Venue%3A%20Sreeprabha%20Auditorium%2C%20Payyanur%0A%E2%80%A2%20Maps%3A%20https%3A//maps.app.goo.gl/ZwyRaYiQ4gM2jgMC9%0A%0ARSVP%20%26%20Full%20Details%3A%20https%3A//jishnuandsruthi.co.in/" target="_blank" rel="noopener" data-gcal>＋ Save the dates</a>
       <a class="btn ghost" href="https://wa.me/?text=Big%20news%21%20Jishnu%20%26%20Sruthi%20are%20tying%20the%20knot%20on%20Nov%206%20%26%207%2C%202026%21%20%F0%9F%8E%8A%20Get%20all%20the%20venue%20details%20and%20schedule%20here%3A%20https%3A%2F%2Fjishnuandsruthi.co.in%2F" target="_blank" rel="noopener">Share ↗</a>
     </div>
   </div>
@@ -512,7 +511,7 @@ footer span{font-size:10.5px;line-height:1.6;letter-spacing:.12em;color:rgba(255
 </footer>
 
 <div class="stickybar">
-  <button class="btn" data-ics>＋ Save the dates</button>
+  <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Jishnu%20%26%20Sruthi%27s%20Wedding%20Celebrations%20%F0%9F%92%8D%F0%9F%8E%89&dates=20261106T053000Z/20261106T083000Z&recur=RRULE:FREQ=DAILY;COUNT=2&details=We%20can%27t%20wait%20to%20celebrate%20with%20you%20across%20two%20amazing%20days%21%0A%0ADay%201%3A%20Marriage%20Ceremony%0A%E2%80%A2%20Date%3A%20Friday%2C%20Nov%206%0A%E2%80%A2%20Time%3A%201%3A20%20PM%20Muhurtham%0A%E2%80%A2%20Venue%3A%20%27Shivoham%27%20House%2C%20Chelannur%0A%E2%80%A2%20Maps%3A%20https%3A//maps.app.goo.gl/HYz6mXHwai9Pw2UUA%3Fg_st%3Dac%0A%0ADay%202%3A%20Wedding%20Reception%0A%E2%80%A2%20Date%3A%20Saturday%2C%20Nov%207%0A%E2%80%A2%20Time%3A%2011%3A30%20AM%20onwards%0A%E2%80%A2%20Venue%3A%20Sreeprabha%20Auditorium%2C%20Payyanur%0A%E2%80%A2%20Maps%3A%20https%3A//maps.app.goo.gl/ZwyRaYiQ4gM2jgMC9%0A%0ARSVP%20%26%20Full%20Details%3A%20https%3A//jishnuandsruthi.co.in/" target="_blank" rel="noopener" data-gcal>＋ Save the dates</a>
   <a class="btn ghost" href="https://wa.me/?text=Big%20news%21%20Jishnu%20%26%20Sruthi%20are%20tying%20the%20knot%20on%20Nov%206%20%26%207%2C%202026%21%20%F0%9F%8E%8A%20Get%20all%20the%20venue%20details%20and%20schedule%20here%3A%20https%3A%2F%2Fjishnuandsruthi.co.in%2F" target="_blank" rel="noopener">Share ↗</a>
 </div>
 
@@ -671,7 +670,7 @@ function onScroll(){
 addEventListener("scroll", function(){ requestAnimationFrame(onScroll); }, {passive:true});
 onScroll();
 
-/* ---------------- cursor glow (smoothed/lerped) + photo tilt (desktop) ---------------- */
+/* ---------------- cursor glow + photo tilt ---------------- */
 var glow = document.getElementById("glow"), tilt = document.getElementById("tilt");
 if (DESKTOP_FINE && !REDUCE_MOTION){
   var glowTarget = {x:innerWidth*.5-220,y:innerHeight*.4-220}, glowPos = {x:glowTarget.x,y:glowTarget.y};
@@ -691,7 +690,7 @@ if (DESKTOP_FINE && !REDUCE_MOTION){
   })();
 } else if (glow) glow.style.display = "none";
 
-/* ---------------- magnetic buttons + 3D card tilt (desktop) ---------------- */
+/* ---------------- magnetic buttons + 3D card tilt ---------------- */
 if (DESKTOP_FINE && !REDUCE_MOTION){
   [].forEach.call(document.querySelectorAll(".btn"), function(b){
     b.addEventListener("mousemove", function(e){
@@ -797,24 +796,14 @@ if (DESKTOP_FINE && !REDUCE_MOTION){
   });
 });
 
-/* ---------------- .ics download ---------------- */
-[].forEach.call(document.querySelectorAll("[data-ics]"), function(b){
+/* ---------------- Google Calendar trigger ---------------- */
+[].forEach.call(document.querySelectorAll("[data-gcal]"), function(b){
   b.addEventListener("click", function(){
-    var body = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Jishnu and Sruthi//EN",
-      "BEGIN:VEVENT","UID:muhurtham-js-2026","DTSTART:20261106T075000Z","DTEND:20261106T083000Z",
-      "SUMMARY:Jishnu & Sruthi - Marriage Ceremony","LOCATION:Shivoham House, Chelannur, Kozhikode","END:VEVENT",
-      "BEGIN:VEVENT","UID:reception-js-2026","DTSTART:20261107T060000Z","DTEND:20261107T083000Z",
-      "SUMMARY:Jishnu & Sruthi - Wedding Reception","LOCATION:Sreeprabha Auditorium, Payyanur","END:VEVENT",
-      "END:VCALENDAR"].join("\r\n");
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([body],{type:"text/calendar"}));
-    a.download = "jishnu-sruthi-wedding.ics";
-    a.click();
     burst(innerWidth*.5, innerHeight*.6, 40);
   });
 });
 
-/* ---------------- background music (real audio file) ---------------- */
+/* ---------------- background music ---------------- */
 var bgm = document.getElementById("bgm");
 var playing = false, userPaused = false;
 var btn = document.getElementById("music"), label = document.getElementById("musicLabel");
@@ -829,7 +818,7 @@ function startMusic(){
   bgm.play().then(function(){
     playing = true;
     btn.classList.add("on"); label.textContent = "music on"; btn.setAttribute("aria-label","Pause music");
-  }).catch(function(){ /* browser blocked it silently; user can still tap the button */ });
+  }).catch(function(){});
 }
 function stopMusic(){
   bgm.pause();
